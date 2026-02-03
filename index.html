@@ -1,10 +1,14 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <!-- Security Headers -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' https: data:; connect-src 'self' https://ig-analytics-vercel.vercel.app; frame-ancestors 'none';">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
 
   <!-- Primary SEO -->
   <title>Axtra – The Ultimate Entertainment App | Free Download for Android, iOS & Smart TV</title>
@@ -111,11 +115,12 @@
   </script>
 
   <!-- Preconnect / Preload -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" as="style" />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
 
   <!-- Alternative Languages (if applicable) -->
   <link rel="alternate" hreflang="en" href="https://axtra.app.eduniapps.com/" />
@@ -133,8 +138,8 @@
       --accent-dark:  #c1121f;
       --accent-glow:  rgba(230,57,70,.35);
       --text-primary: #f0f0f4;
-      --text-muted:   #9a9aa8;
-      --text-dim:     #5e5e6e;
+      --text-muted:   #c5c5d0;
+      --text-dim:     #8e8e9e;
       --border:       rgba(255,255,255,.06);
       --radius:       14px;
       --radius-sm:    8px;
@@ -218,6 +223,11 @@
       transition: background .2s;
       cursor: pointer;
     }
+    .share-btn:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+    
+    button:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+    
+    a:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
     .share-btn:hover { background: #2d2d3a; }
     .share-btn svg { width: 14px; height: 14px; }
 
@@ -847,192 +857,193 @@
       cursor: pointer;
     }
     .terms-link:hover { opacity: .7; }
-/* ===== FLOATING DOWNLOAD BUTTON ===== */
-@import url('https://fonts.googleapis.com/css?family=Space%20Grotesk:700|Space%20Grotesk:400');
 
-.float-dl {
-  /* Positioning */
-  position: fixed;
-  bottom: 28px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 100;
-  
-  /* Size & Layout */
-  padding: calc(0.5 * 1.5rem) calc(1 * 1.5rem);
-  border: calc(0.08 * 1.5rem) solid transparent;
-  border-radius: calc(0.7 * 1.5rem);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  white-space: nowrap;
-  
-  /* Typography */
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #F3F3F3;
-  letter-spacing: 0.02em;
-  
-  /* Background & Border Effects */
-  background: linear-gradient(#121213, #121213), 
-              linear-gradient(#121213 50%, rgba(18, 18, 19, 0.6) 80%, rgba(18, 18, 19, 0)), 
-              linear-gradient(90deg, 
-                #FF6D1B, /* orange */
-                #FFEE55, /* yellow */
-                #5BFF89, /* green */
-                #4D8AFF, /* blue */
-                #6B5FFF, /* purple */
-                #FF64F9, /* pink */
-                #FF6565  /* red */
-              );
-  background-origin: border-box;
-  background-clip: padding-box, border-box, border-box;
-  background-size: 200%;
-  
-  /* Animation */
-  animation: gradient-animate 2s infinite linear;
-  
-  /* Cursor & Interactions */
-  cursor: pointer;
-  transition: transform 0.25s cubic-bezier(.4,0,.2,1);
-  
-  /* Remove default button styles */
-  border: none;
-  outline: none;
-}
+    /* ===== FLOATING DOWNLOAD BUTTON ===== */
+    @import url('https://fonts.googleapis.com/css?family=Space%20Grotesk:700|Space%20Grotesk:400');
 
-/* Rainbow glow effect */
-.float-dl::before {
-  content: '';
-  background: linear-gradient(90deg, 
-    #FF6D1B, /* orange */
-    #FFEE55, /* yellow */
-    #5BFF89, /* green */
-    #4D8AFF, /* blue */
-    #6B5FFF, /* purple */
-    #FF64F9, /* pink */
-    #FF6565  /* red */
-  );
-  height: 30%;
-  width: 60%;
-  position: absolute;
-  bottom: -20%;
-  z-index: -5;
-  background-size: 200%;
-  animation: gradient-animate 2s infinite linear;
-  filter: blur(calc(0.8 * 1.5rem));
-  border-radius: 50%;
-  opacity: 0.8;
-}
+    .float-dl {
+      /* Positioning */
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      
+      /* Size & Layout */
+      padding: calc(0.5 * 1.5rem) calc(1 * 1.5rem);
+      border: calc(0.08 * 1.5rem) solid transparent;
+      border-radius: calc(0.7 * 1.5rem);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      white-space: nowrap;
+      
+      /* Typography */
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #F3F3F3;
+      letter-spacing: 0.02em;
+      
+      /* Background & Border Effects */
+      background: linear-gradient(#121213, #121213), 
+                  linear-gradient(#121213 50%, rgba(18, 18, 19, 0.6) 80%, rgba(18, 18, 19, 0)), 
+                  linear-gradient(90deg, 
+                    #FF6D1B, /* orange */
+                    #FFEE55, /* yellow */
+                    #5BFF89, /* green */
+                    #4D8AFF, /* blue */
+                    #6B5FFF, /* purple */
+                    #FF64F9, /* pink */
+                    #FF6565  /* red */
+                  );
+      background-origin: border-box;
+      background-clip: padding-box, border-box, border-box;
+      background-size: 200%;
+      
+      /* Animation */
+      animation: gradient-animate 2s infinite linear;
+      
+      /* Cursor & Interactions */
+      cursor: pointer;
+      transition: transform 0.25s cubic-bezier(.4,0,.2,1);
+      
+      /* Remove default button styles */
+      border: none;
+      outline: none;
+    }
 
-/* Hover effects */
-.float-dl:hover {
-  transform: translateX(-50%) translateY(-2px);
-  animation: gradient-animate 0.5s infinite linear;
-}
+    /* Rainbow glow effect */
+    .float-dl::before {
+      content: '';
+      background: linear-gradient(90deg, 
+        #FF6D1B, /* orange */
+        #FFEE55, /* yellow */
+        #5BFF89, /* green */
+        #4D8AFF, /* blue */
+        #6B5FFF, /* purple */
+        #FF64F9, /* pink */
+        #FF6565  /* red */
+      );
+      height: 30%;
+      width: 60%;
+      position: absolute;
+      bottom: -20%;
+      z-index: -5;
+      background-size: 200%;
+      animation: gradient-animate 2s infinite linear;
+      filter: blur(calc(0.8 * 1.5rem));
+      border-radius: 50%;
+      opacity: 0.8;
+    }
 
-.float-dl:hover::before {
-  animation: gradient-animate 0.5s infinite linear;
-  filter: blur(calc(1 * 1.5rem));
-  opacity: 0.9;
-}
+    /* Hover effects */
+    .float-dl:hover {
+      transform: translateX(-50%) translateY(-2px);
+      animation: gradient-animate 0.5s infinite linear;
+    }
 
-.float-dl:active {
-  transform: translateX(-50%) translateY(1px);
-}
+    .float-dl:hover::before {
+      animation: gradient-animate 0.5s infinite linear;
+      filter: blur(calc(1 * 1.5rem));
+      opacity: 0.9;
+    }
 
-/* Icon styling */
-.float-dl svg {
-  width: 20px;
-  height: 20px;
-  stroke: #F3F3F3;
-  stroke-width: 2.5;
-}
+    .float-dl:active {
+      transform: translateX(-50%) translateY(1px);
+    }
 
-/* Price tag styling */
-.float-dl .price-tag {
-  font-size: 0.7rem;
-  font-weight: 400;
-  opacity: 0.85;
-  margin-left: 4px;
-}
+    /* Icon styling */
+    .float-dl svg {
+      width: 20px;
+      height: 20px;
+      stroke: #F3F3F3;
+      stroke-width: 2.5;
+    }
 
-/* Animation keyframes */
-@keyframes gradient-animate {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 200% 50%;
-  }
-}
+    /* Price tag styling */
+    .float-dl .price-tag {
+      font-size: 0.7rem;
+      font-weight: 400;
+      opacity: 0.85;
+      margin-left: 4px;
+    }
 
-/* Responsive adjustments */
-@media (max-width: 1000px) {
-  .float-dl {
-    padding: calc(0.5 * 1.2rem) calc(1 * 1.2rem);
-    border: calc(0.08 * 1.2rem) solid transparent;
-    border-radius: calc(0.7 * 1.2rem);
-    font-size: 0.95rem;
-  }
-  
-  .float-dl::before {
-    filter: blur(calc(0.8 * 1.2rem));
-  }
-  
-  .float-dl:hover::before {
-    filter: blur(calc(1 * 1.2rem));
-  }
-  
-  .float-dl svg {
-    width: 18px;
-    height: 18px;
-  }
-}
+    /* Animation keyframes */
+    @keyframes gradient-animate {
+      0% {
+        background-position: 0% 50%;
+      }
+      100% {
+        background-position: 200% 50%;
+      }
+    }
 
-@media (max-width: 520px) {
-  .float-dl {
-    padding: calc(0.5 * 1rem) calc(1 * 1rem);
-    border: calc(0.08 * 1rem) solid transparent;
-    border-radius: calc(0.7 * 1rem);
-    font-size: 0.85rem;
-    bottom: 22px;
-    gap: 8px;
-  }
-  
-  .float-dl::before {
-    filter: blur(calc(0.8 * 1rem));
-  }
-  
-  .float-dl:hover::before {
-    filter: blur(calc(1 * 1rem));
-  }
-  
-  .float-dl svg {
-    width: 16px;
-    height: 16px;
-  }
-  
-  .float-dl .price-tag {
-    font-size: 0.65rem;
-  }
-}
+    /* Responsive adjustments */
+    @media (max-width: 1000px) {
+      .float-dl {
+        padding: calc(0.5 * 1.2rem) calc(1 * 1.2rem);
+        border: calc(0.08 * 1.2rem) solid transparent;
+        border-radius: calc(0.7 * 1.2rem);
+        font-size: 0.95rem;
+      }
+      
+      .float-dl::before {
+        filter: blur(calc(0.8 * 1.2rem));
+      }
+      
+      .float-dl:hover::before {
+        filter: blur(calc(1 * 1.2rem));
+      }
+      
+      .float-dl svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
 
-/* Remove the old pulse animation since we have new gradient animation */
-.float-dl {
-  animation: gradient-animate 2s infinite linear;
-}
+    @media (max-width: 520px) {
+      .float-dl {
+        padding: calc(0.5 * 1rem) calc(1 * 1rem);
+        border: calc(0.08 * 1rem) solid transparent;
+        border-radius: calc(0.7 * 1rem);
+        font-size: 0.85rem;
+        bottom: 22px;
+        gap: 8px;
+      }
+      
+      .float-dl::before {
+        filter: blur(calc(0.8 * 1rem));
+      }
+      
+      .float-dl:hover::before {
+        filter: blur(calc(1 * 1rem));
+      }
+      
+      .float-dl svg {
+        width: 16px;
+        height: 16px;
+      }
+      
+      .float-dl .price-tag {
+        font-size: 0.65rem;
+      }
+    }
 
-/* Optional: Add a subtle pulse for the price tag */
-.float-dl .price-tag {
-  transition: opacity 0.3s ease;
-}
+    /* Remove the old pulse animation since we have new gradient animation */
+    .float-dl {
+      animation: gradient-animate 2s infinite linear;
+    }
 
-.float-dl:hover .price-tag {
-  opacity: 1;
-}
+    /* Optional: Add a subtle pulse for the price tag */
+    .float-dl .price-tag {
+      transition: opacity 0.3s ease;
+    }
+
+    .float-dl:hover .price-tag {
+      opacity: 1;
+    }
 
     /* ===== MODAL ===== */
     .modal-overlay {
@@ -1183,100 +1194,100 @@
       line-height: 1.4;
     }
     .dl-modal-btns {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 20px;
-  width: 100%;
-  max-width: 600px;
-  padding: 0 1rem;
-}
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 20px;
+      width: 100%;
+      max-width: 600px;
+      padding: 0 1rem;
+    }
 
-.dl-modal-btns .input-wrapper {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
-  padding: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-}
+    .dl-modal-btns .input-wrapper {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
 
-.dl-modal-btns .input-wrapper:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 4px 30px -1px rgba(0, 0, 0, 0.3);
-}
+    .dl-modal-btns .input-wrapper:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 4px 30px -1px rgba(0, 0, 0, 0.3);
+    }
 
-.dl-modal-btns button {
-  flex: 1; 
-  padding: 1rem 1.25rem;
-  border-radius: 12px;
-  font-size: 1rem;
-  font-weight: 600;
-  font-family: 'Inter', sans-serif;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
+    .dl-modal-btns button {
+      flex: 1; 
+      padding: 1rem 1.25rem;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
 
-.dl-modal-btns .btn-confirm { 
-  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
-  color: #fff;
-}
+    .dl-modal-btns .btn-confirm { 
+      background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+      color: #fff;
+    }
 
-.dl-modal-btns .btn-cancel { 
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
+    .dl-modal-btns .btn-cancel { 
+      background: rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
 
-.dl-modal-btns button:hover { 
-  transform: translateY(-2px);
-  box-shadow: 0 5px 20px -2px rgba(79, 70, 229, 0.4);
-}
+    .dl-modal-btns button:hover { 
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px -2px rgba(79, 70, 229, 0.4);
+    }
 
-.dl-modal-btns .btn-cancel:hover {
-  background: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 5px 20px -2px rgba(255, 255, 255, 0.1);
-}
+    .dl-modal-btns .btn-cancel:hover {
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 5px 20px -2px rgba(255, 255, 255, 0.1);
+    }
 
-.dl-modal-btns button:active {
-  transform: translateY(1px);
-}
+    .dl-modal-btns button:active {
+      transform: translateY(1px);
+    }
 
-.dl-modal-btns .button-content {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+    .dl-modal-btns .button-content {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-.dl-modal-btns .button-content svg {
-  width: 20px;
-  height: 20px;
-  transition: transform 0.3s ease;
-}
+    .dl-modal-btns .button-content svg {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.3s ease;
+    }
 
-.dl-modal-btns button:hover .button-content svg {
-  transform: translateY(2px);
-}
+    .dl-modal-btns button:hover .button-content svg {
+      transform: translateY(2px);
+    }
 
-@media (max-width: 640px) {
-  .dl-modal-btns {
-    padding: 0 0.75rem;
-  }
-  
-  .dl-modal-btns button {
-    padding: 0.875rem 1rem;
-  }
-}
+    @media (max-width: 640px) {
+      .dl-modal-btns {
+        padding: 0 0.75rem;
+      }
+      
+      .dl-modal-btns button {
+        padding: 0.875rem 1rem;
+      }
+    }
 
     /* ===== ANIMATIONS ===== */
     @keyframes fadeUp {
@@ -1390,12 +1401,12 @@
       <h1>Axtra</h1>
       <div class="hero-sub">Start Streaming</div>
       <div class="hero-price">Free · In-App Purchases</div>
-      <button class="share-btn" onclick="shareApp()" aria-label="Share this app">
+      <button class="share-btn" onclick="shareApp()" aria-label="Share Axtra app">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
         Share
       </button>
-            <button class="share-btn" onclick="openDownload()" aria-label="Share this app">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <button class="share-btn" onclick="openDownload()" aria-label="Download Axtra app">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Download
       </button>
     </div>
@@ -1406,7 +1417,7 @@
     <div class="stat-item">
       <div class="stat-label">Ratings</div>
       <div class="stat-value">12.4K</div>
-      <div class="stars">★★★★★</div>
+      <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
     </div>
     <div class="stat-item">
       <div class="stat-label">Ages</div>
@@ -1427,9 +1438,9 @@
       </div>
       <div class="stat-sub">Entertainment</div>
     </div>
-    <div class="stat-item" onclick="openDeveloperProfile()" style="cursor: pointer;">
+    <div class="stat-item" onclick="openDeveloperProfile()" style="cursor: pointer;" role="button" tabindex="0" aria-label="View developer profile for Axtra Tech" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openDeveloperProfile();}">
       <div class="stat-label">Developer</div>
-      <div class="dev-icon">
+      <div class="dev-icon" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
       </div>
       <div class="stat-sub">Axtra Tech</div>
@@ -1438,16 +1449,16 @@
 
   <!-- SCREENSHOTS GRID -->
   <section class="screenshots-section anim-in" aria-label="App screenshots">
-    <div class="screenshots-grid">
+    <div class="screenshots-grid" role="list">
       <!-- Screenshot 1 -->
       <div class="screenshot-item" role="listitem" aria-label="Watch Movies & TV Shows">
         <div class="screenshot-item-inner">
-          <div class="electric-border"></div>
-          <div class="electric-glow-1"></div>
-          <div class="electric-glow-2"></div>
-          <div class="electric-overlay-1"></div>
-          <div class="electric-overlay-2"></div>
-          <div class="electric-bg-glow"></div>
+          <div class="electric-border" aria-hidden="true"></div>
+          <div class="electric-glow-1" aria-hidden="true"></div>
+          <div class="electric-glow-2" aria-hidden="true"></div>
+          <div class="electric-overlay-1" aria-hidden="true"></div>
+          <div class="electric-overlay-2" aria-hidden="true"></div>
+          <div class="electric-bg-glow" aria-hidden="true"></div>
           
           <div class="screenshot-content">
             <div class="screenshot-phone">
@@ -1471,12 +1482,12 @@
       <!-- Screenshot 2 -->
       <div class="screenshot-item" role="listitem" aria-label="Premium Music">
         <div class="screenshot-item-inner">
-          <div class="electric-border"></div>
-          <div class="electric-glow-1"></div>
-          <div class="electric-glow-2"></div>
-          <div class="electric-overlay-1"></div>
-          <div class="electric-overlay-2"></div>
-          <div class="electric-bg-glow"></div>
+          <div class="electric-border" aria-hidden="true"></div>
+          <div class="electric-glow-1" aria-hidden="true"></div>
+          <div class="electric-glow-2" aria-hidden="true"></div>
+          <div class="electric-overlay-1" aria-hidden="true"></div>
+          <div class="electric-overlay-2" aria-hidden="true"></div>
+          <div class="electric-bg-glow" aria-hidden="true"></div>
           
           <div class="screenshot-content">
             <div class="screenshot-phone">
@@ -1500,12 +1511,12 @@
       <!-- Screenshot 3 -->
       <div class="screenshot-item" role="listitem" aria-label="YouTube Premium">
         <div class="screenshot-item-inner">
-          <div class="electric-border"></div>
-          <div class="electric-glow-1"></div>
-          <div class="electric-glow-2"></div>
-          <div class="electric-overlay-1"></div>
-          <div class="electric-overlay-2"></div>
-          <div class="electric-bg-glow"></div>
+          <div class="electric-border" aria-hidden="true"></div>
+          <div class="electric-glow-1" aria-hidden="true"></div>
+          <div class="electric-glow-2" aria-hidden="true"></div>
+          <div class="electric-overlay-1" aria-hidden="true"></div>
+          <div class="electric-overlay-2" aria-hidden="true"></div>
+          <div class="electric-bg-glow" aria-hidden="true"></div>
           
           <div class="screenshot-content">
             <div class="screenshot-phone">
@@ -1529,12 +1540,12 @@
       <!-- Screenshot 4 -->
       <div class="screenshot-item" role="listitem" aria-label="Live Sports Streaming">
         <div class="screenshot-item-inner">
-          <div class="electric-border"></div>
-          <div class="electric-glow-1"></div>
-          <div class="electric-glow-2"></div>
-          <div class="electric-overlay-1"></div>
-          <div class="electric-overlay-2"></div>
-          <div class="electric-bg-glow"></div>
+          <div class="electric-border" aria-hidden="true"></div>
+          <div class="electric-glow-1" aria-hidden="true"></div>
+          <div class="electric-glow-2" aria-hidden="true"></div>
+          <div class="electric-overlay-1" aria-hidden="true"></div>
+          <div class="electric-overlay-2" aria-hidden="true"></div>
+          <div class="electric-bg-glow" aria-hidden="true"></div>
           
           <div class="screenshot-content">
             <div class="screenshot-phone">
@@ -1558,12 +1569,12 @@
       <!-- Screenshot 5 -->
       <div class="screenshot-item" role="listitem" aria-label="Short Dramas">
         <div class="screenshot-item-inner">
-          <div class="electric-border"></div>
-          <div class="electric-glow-1"></div>
-          <div class="electric-glow-2"></div>
-          <div class="electric-overlay-1"></div>
-          <div class="electric-overlay-2"></div>
-          <div class="electric-bg-glow"></div>
+          <div class="electric-border" aria-hidden="true"></div>
+          <div class="electric-glow-1" aria-hidden="true"></div>
+          <div class="electric-glow-2" aria-hidden="true"></div>
+          <div class="electric-overlay-1" aria-hidden="true"></div>
+          <div class="electric-overlay-2" aria-hidden="true"></div>
+          <div class="electric-bg-glow" aria-hidden="true"></div>
           
           <div class="screenshot-content">
             <div class="screenshot-phone">
@@ -1591,58 +1602,58 @@
     <div class="devices-row">
       <div class="device-badges">
         <div class="device-badge">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.56 8.94L7.62 3.55a1.991 1.991 0 00-2 .01L3.01 5.15 14.39 16.53l2.17-7.59zM3 5.3L1.55 6.1c-.94.54-1.55 1.58-1.55 2.7v6.4c0 1.12.61 2.16 1.55 2.7L3 19.6V5.3zm17.44 2.76L19.99 7.47l-2.17 7.59 2.62 2.62c.94-.54 1.55-1.58 1.55-2.7V10.76c0-1.12-.61-2.16-1.55-2.7z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.56 8.94L7.62 3.55a1.991 1.991 0 00-2 .01L3.01 5.15 14.39 16.53l2.17-7.59zM3 5.3L1.55 6.1c-.94.54-1.55 1.58-1.55 2.7v6.4c0 1.12.61 2.16 1.55 2.7L3 19.6V5.3zm17.44 2.76L19.99 7.47l-2.17 7.59 2.62 2.62c.94-.54 1.55-1.58 1.55-2.7V10.76c0-1.12-.61-2.16-1.55-2.7z"/></svg>
           <span>Android</span>
         </div>
         <div class="device-badge">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
           <span>iOS</span>
         </div>
         <div class="device-badge">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 0h8v8h-8v-8z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 0h8v8h-8v-8z"/></svg>
           <span>Windows</span>
         </div>
         <div class="device-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="12" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="12" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
           <span>Smart TV</span>
         </div>
       </div>
-      <div class="devices-chevron" id="devChevron" onclick="toggleDevices()" aria-expanded="false" aria-controls="devExpanded" role="button" tabindex="0">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
+      <button class="devices-chevron" id="devChevron" onclick="toggleDevices()" aria-expanded="false" aria-controls="devExpanded" aria-label="Show more devices">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
     </div>
     <div class="devices-expanded" id="devExpanded" aria-label="Full device list">
       <div class="devices-expanded-inner">
         <div class="device-detail">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
           <span>Android 8.0+</span>
         </div>
         <div class="device-detail">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
           <span>iOS 14+</span>
         </div>
         <div class="device-detail">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
           <span>Windows 10/11</span>
         </div>
         <div class="device-detail">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
           <span>Samsung Smart TV</span>
         </div>
         <div class="device-detail">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
           <span>Amazon Fire TV</span>
         </div>
         <div class="device-detail">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
           <span>Android TV</span>
         </div>
         <div class="device-detail">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
           <span>iPad (iPadOS 14+)</span>
         </div>
         <div class="device-detail">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
           <span>Chromecast compatible</span>
         </div>
       </div>
@@ -1664,7 +1675,7 @@
 
   <!-- WHAT'S NEW -->
   <section class="whatsnew-section anim-in" aria-label="What's new">
-    <div class="section-title">What's New <a href="#" onclick="openVersionHistory(); return false;">Version History ›</a></div>
+    <div class="section-title">What's New <a href="#" onclick="openVersionHistory(); return false;" aria-label="View version history">Version History ›</a></div>
     <div class="version-badge">v 3.2.1</div>
     <div class="whatsnew-text">
       <p>✨ Redesigned home screen with AI-powered recommendations tailored to your taste.</p>
@@ -1677,19 +1688,19 @@
 
   <!-- RATINGS & REVIEWS -->
   <section class="ratings-section anim-in" aria-label="Ratings and reviews">
-    <div class="section-title">Ratings &amp; Reviews <a href="#" onclick="showAllReviews(); return false;">›</a></div>
+    <div class="section-title">Ratings &amp; Reviews <a href="#" onclick="showAllReviews(); return false;" aria-label="View all reviews">›</a></div>
     <div class="rating-hero">
       <div class="rating-big">
         <div class="number">4.8</div>
-        <div class="stars">★★★★★</div>
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
         <div class="out-of">out of 5</div>
       </div>
-      <div class="rating-bars">
-        <div class="bar-row"><span class="bar-label">5</span><div class="bar-bg"><div class="bar-fill" style="width:78%"></div></div></div>
-        <div class="bar-row"><span class="bar-label">4</span><div class="bar-bg"><div class="bar-fill" style="width:12%"></div></div></div>
-        <div class="bar-row"><span class="bar-label">3</span><div class="bar-bg"><div class="bar-fill" style="width:5%"></div></div></div>
-        <div class="bar-row"><span class="bar-label">2</span><div class="bar-bg"><div class="bar-fill" style="width:3%"></div></div></div>
-        <div class="bar-row"><span class="bar-label">1</span><div class="bar-bg"><div class="bar-fill" style="width:2%"></div></div></div>
+      <div class="rating-bars" aria-label="Rating distribution">
+        <div class="bar-row"><span class="bar-label">5</span><div class="bar-bg"><div class="bar-fill" style="width:78%" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div></div></div>
+        <div class="bar-row"><span class="bar-label">4</span><div class="bar-bg"><div class="bar-fill" style="width:12%" role="progressbar" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100"></div></div></div>
+        <div class="bar-row"><span class="bar-label">3</span><div class="bar-bg"><div class="bar-fill" style="width:5%" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div></div></div>
+        <div class="bar-row"><span class="bar-label">2</span><div class="bar-bg"><div class="bar-fill" style="width:3%" role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="100"></div></div></div>
+        <div class="bar-row"><span class="bar-label">1</span><div class="bar-bg"><div class="bar-fill" style="width:2%" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100"></div></div></div>
         <div class="rating-count">12,400 Ratings</div>
       </div>
     </div>
@@ -1697,17 +1708,17 @@
     <!-- Reviews -->
     <div class="review-card">
       <div class="review-head"><span class="reviewer">Sarah M.</span><span class="review-date">Jan 28, 2026</span></div>
-      <div class="review-stars">★★★★★</div>
+      <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
       <div class="review-body">Absolutely love Axtra! The UI is clean, content loads blazing fast, and the recommendations are spot on. Best streaming app I've used.</div>
     </div>
     <div class="review-card">
       <div class="review-head"><span class="reviewer">James K.</span><span class="review-date">Jan 22, 2026</span></div>
-      <div class="review-stars">★★★★★</div>
+      <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
       <div class="review-body">Multi-profile feature is a game changer for my family. Kids have their own safe space and I have mine. Highly recommend!</div>
     </div>
     <div class="review-card">
       <div class="review-head"><span class="reviewer">Aisha R.</span><span class="review-date">Jan 15, 2026</span></div>
-      <div class="review-stars">★★★★☆</div>
+      <div class="review-stars" aria-label="4 out of 5 stars">★★★★☆</div>
       <div class="review-body">Works great on my Smart TV and phone. Wish they'd add more regional documentaries but overall an excellent app.</div>
     </div>
     
@@ -1715,24 +1726,24 @@
     <div id="moreReviews" style="display: none;">
       <div class="review-card">
         <div class="review-head"><span class="reviewer">Mark T.</span><span class="review-date">Jan 10, 2026</span></div>
-        <div class="review-stars">★★★★★</div>
+        <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
         <div class="review-body">The download feature is fantastic! I can watch my favorite shows offline during my commute. No buffering issues at all.</div>
       </div>
       <div class="review-card">
         <div class="review-head"><span class="reviewer">Lisa P.</span><span class="review-date">Jan 5, 2026</span></div>
-        <div class="review-stars">★★★★☆</div>
+        <div class="review-stars" aria-label="4 out of 5 stars">★★★★☆</div>
         <div class="review-body">Great selection of content, though I'd love to see more 4K HDR options. Interface is intuitive and easy to navigate.</div>
       </div>
       <div class="review-card">
         <div class="review-head"><span class="reviewer">David L.</span><span class="review-date">Dec 28, 2025</span></div>
-        <div class="review-stars">★★★★★</div>
+        <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
         <div class="review-body">Customer support is responsive and helpful. Fixed an issue I had with my account in under 10 minutes. Impressive!</div>
       </div>
     </div>
     
     <!-- See More Reviews Button -->
     <div class="see-more-reviews">
-      <button class="see-more-btn" id="seeMoreReviewsBtn" onclick="toggleMoreReviews()">See More Reviews</button>
+      <button class="see-more-btn" id="seeMoreReviewsBtn" onclick="toggleMoreReviews()" aria-label="See more reviews">See More Reviews</button>
     </div>
   </section>
 
@@ -1741,14 +1752,14 @@
     <div class="section-title">Connect With Us</div>
     <div id="social-cards">
       <!-- Instagram Card -->
-      <div class="social-card instagram-card" onclick="window.open('https://instagram.com/dekut.connect', '_blank')">
+      <a href="https://instagram.com/dekut.connect" target="_blank" rel="noopener noreferrer" class="social-card instagram-card" aria-label="Follow us on Instagram">
         <div class="social-card-content">
-          <i class="fab fa-instagram social-card-icon"></i>
+          <i class="fab fa-instagram social-card-icon" aria-hidden="true"></i>
           
           <!-- Instagram Stats Container -->
           <div class="instagram-stats-container" data-username="dekut.connect">
             <div class="instagram-loading">
-              <div class="loading-spinner"></div>
+              <div class="loading-spinner" aria-hidden="true"></div>
               <span>Loading stats...</span>
             </div>
             
@@ -1778,42 +1789,44 @@
           </div>
           
           <div class="social-card-button">
-            <i class="fa-solid fa-link"></i>
+            <i class="fa-solid fa-link" aria-hidden="true"></i>
             <span>Follow Us</span>
           </div>
         </div>
-      </div><!-- Anonymous Card -->
-<div class="social-card" onclick="window.open('https://twet.link/dekutconnect', '_blank')">
-  <div class="social-card-content">
-    <i class="fab fa-font-awesome-alt social-card-icon"></i> <!-- Changed from fa-anonymous -->
-    <div class="social-card-title">Anonymous Enquiry</div>
-    <div class="social-card-button">
-      <i class="fa-solid fa-link"></i>
-      <span>Chat</span>
-    </div>
-  </div>
-</div>
+      </a>
 
-<!-- Telegram Card -->
-<div class="social-card" onclick="window.open('https://t.me/addlist/B7N3JNdzaOo1ZDc8', '_blank')">
-  <div class="social-card-content">
-    <i class="fab fa-telegram social-card-icon"></i> <!-- Fixed: removed 's' from 'telegramsocial' -->
-    <div class="social-card-title">Telegram</div>
-    <div class="social-card-stats">Members: <span>15k</span></div>
-    <div class="social-card-button">
-      <i class="fa-solid fa-link"></i>
-      <span>Join Us</span>
-    </div>
-  </div>
-</div>
+      <!-- Anonymous Card -->
+      <a href="https://twet.link/dekutconnect" target="_blank" rel="noopener noreferrer" class="social-card" aria-label="Chat anonymously">
+        <div class="social-card-content">
+          <i class="fa-solid fa-user-secret social-card-icon" aria-hidden="true"></i>
+          <div class="social-card-title">Anonymous Enquiry</div>
+          <div class="social-card-button">
+            <i class="fa-solid fa-link" aria-hidden="true"></i>
+            <span>Chat</span>
+          </div>
+        </div>
+      </a>
 
-<!-- Whatsapp Card -->
-<div class="social-card" onclick="window.open('https://whatsapp.com/channel/0029VbAb8L46WaKx34k8vU0S', '_blank')">
-  <div class="social-card-content">
-    <i class="fab fa-whatsapp social-card-icon"></i>
-    <div class="social-card-title">WhatsApp Channel</div>
-    <div class="social-card-stats">Members: <span>150k</span></div>
-    <div class="social-card-button">
+      <!-- Telegram Card -->
+      <a href="https://t.me/addlist/B7N3JNdzaOo1ZDc8" target="_blank" rel="noopener noreferrer" class="social-card" aria-label="Join us on Telegram">
+        <div class="social-card-content">
+          <i class="fab fa-telegram social-card-icon" aria-hidden="true"></i>
+          <div class="social-card-title">Telegram</div>
+          <div class="social-card-stats">Members: <span>15k</span></div>
+          <div class="social-card-button">
+            <i class="fa-solid fa-link" aria-hidden="true"></i>
+            <span>Join Us</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- WhatsApp Channel Card -->
+      <a href="https://whatsapp.com/channel/0029VbAb8L46WaKx34k8vU0S" target="_blank" rel="noopener noreferrer" class="social-card" aria-label="Join our WhatsApp channel">
+        <div class="social-card-content">
+          <i class="fab fa-whatsapp social-card-icon" aria-hidden="true"></i>
+          <div class="social-card-title">WhatsApp Channel</div>
+          <div class="social-card-stats">Members: <span>150k</span></div>
+          <div class="social-card-button">
       <i class="fa-solid fa-link"></i>
       <span>Join Us</span>
     </div>
@@ -2046,8 +2059,12 @@
       
       try {
         console.log('Fetching Instagram data from API...');
-        const response = await fetch(apiUrl);
-        
+const response = await fetch(apiUrl, {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json'
+          }
+        });        
         if (!response.ok) {
           throw new Error(`API request failed: ${response.status}`);
         }
@@ -2394,3 +2411,4 @@ function closeDownload() {
 </script>
 </body>
 </html>
+  
