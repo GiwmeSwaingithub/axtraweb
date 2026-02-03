@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -487,18 +486,14 @@
     }
 
     #social-cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
       gap: 18px;
       width: 100%;
     }
 
     .social-card {
-      flex: 1;
-      min-width: 150px;
-      max-width: 200px;
-      height: 200px;
+      min-height: 200px;
       background-color: rgba(255, 255, 255, 0.08);
       border-radius: 16px;
       position: relative;
@@ -527,6 +522,15 @@
     }
     .social-card:nth-child(3) {
       --color: 220 100% 35%;
+    }
+    .social-card:nth-child(4) {
+      --color: 142 76% 36%;
+    }
+    .social-card:nth-child(5) {
+      --color: 142 76% 36%;
+    }
+    .social-card:nth-child(6) {
+      --color: 201 100% 35%;
     }
 
     .social-card::before {
@@ -847,192 +851,94 @@
       cursor: pointer;
     }
     .terms-link:hover { opacity: .7; }
-/* ===== FLOATING DOWNLOAD BUTTON ===== */
-@import url('https://fonts.googleapis.com/css?family=Space%20Grotesk:700|Space%20Grotesk:400');
 
-.float-dl {
-  /* Positioning */
-  position: fixed;
-  bottom: 28px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 100;
-  
-  /* Size & Layout */
-  padding: calc(0.5 * 1.5rem) calc(1 * 1.5rem);
-  border: calc(0.08 * 1.5rem) solid transparent;
-  border-radius: calc(0.7 * 1.5rem);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  white-space: nowrap;
-  
-  /* Typography */
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #F3F3F3;
-  letter-spacing: 0.02em;
-  
-  /* Background & Border Effects */
-  background: linear-gradient(#121213, #121213), 
-              linear-gradient(#121213 50%, rgba(18, 18, 19, 0.6) 80%, rgba(18, 18, 19, 0)), 
-              linear-gradient(90deg, 
-                #FF6D1B, /* orange */
-                #FFEE55, /* yellow */
-                #5BFF89, /* green */
-                #4D8AFF, /* blue */
-                #6B5FFF, /* purple */
-                #FF64F9, /* pink */
-                #FF6565  /* red */
-              );
-  background-origin: border-box;
-  background-clip: padding-box, border-box, border-box;
-  background-size: 200%;
-  
-  /* Animation */
-  animation: gradient-animate 2s infinite linear;
-  
-  /* Cursor & Interactions */
-  cursor: pointer;
-  transition: transform 0.25s cubic-bezier(.4,0,.2,1);
-  
-  /* Remove default button styles */
-  border: none;
-  outline: none;
-}
+    /* ===== FLOATING DOWNLOAD BUTTON ===== */
+    @import url('https://fonts.googleapis.com/css?family=Space%20Grotesk:700|Space%20Grotesk:400');
 
-/* Rainbow glow effect */
-.float-dl::before {
-  content: '';
-  background: linear-gradient(90deg, 
-    #FF6D1B, /* orange */
-    #FFEE55, /* yellow */
-    #5BFF89, /* green */
-    #4D8AFF, /* blue */
-    #6B5FFF, /* purple */
-    #FF64F9, /* pink */
-    #FF6565  /* red */
-  );
-  height: 30%;
-  width: 60%;
-  position: absolute;
-  bottom: -20%;
-  z-index: -5;
-  background-size: 200%;
-  animation: gradient-animate 2s infinite linear;
-  filter: blur(calc(0.8 * 1.5rem));
-  border-radius: 50%;
-  opacity: 0.8;
-}
+    .float-dl {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      padding: calc(0.5 * 1.5rem) calc(1 * 1.5rem);
+      border: calc(0.08 * 1.5rem) solid transparent;
+      border-radius: calc(0.7 * 1.5rem);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      white-space: nowrap;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #F3F3F3;
+      letter-spacing: 0.02em;
+      background: linear-gradient(#121213, #121213), 
+                  linear-gradient(#121213 50%, rgba(18, 18, 19, 0.6) 80%, rgba(18, 18, 19, 0)), 
+                  linear-gradient(90deg, 
+                    #FF6D1B, #FFEE55, #5BFF89, #4D8AFF, #6B5FFF, #FF64F9, #FF6565
+                  );
+      background-origin: border-box;
+      background-clip: padding-box, border-box, border-box;
+      background-size: 200%;
+      animation: gradient-animate 2s infinite linear;
+      cursor: pointer;
+      transition: transform 0.25s cubic-bezier(.4,0,.2,1);
+      border: none;
+      outline: none;
+    }
 
-/* Hover effects */
-.float-dl:hover {
-  transform: translateX(-50%) translateY(-2px);
-  animation: gradient-animate 0.5s infinite linear;
-}
+    .float-dl::before {
+      content: '';
+      background: linear-gradient(90deg, 
+        #FF6D1B, #FFEE55, #5BFF89, #4D8AFF, #6B5FFF, #FF64F9, #FF6565
+      );
+      height: 30%;
+      width: 60%;
+      position: absolute;
+      bottom: -20%;
+      z-index: -5;
+      background-size: 200%;
+      animation: gradient-animate 2s infinite linear;
+      filter: blur(calc(0.8 * 1.5rem));
+      border-radius: 50%;
+      opacity: 0.8;
+    }
 
-.float-dl:hover::before {
-  animation: gradient-animate 0.5s infinite linear;
-  filter: blur(calc(1 * 1.5rem));
-  opacity: 0.9;
-}
+    .float-dl:hover {
+      transform: translateX(-50%) translateY(-2px);
+      animation: gradient-animate 0.5s infinite linear;
+    }
 
-.float-dl:active {
-  transform: translateX(-50%) translateY(1px);
-}
+    .float-dl:hover::before {
+      animation: gradient-animate 0.5s infinite linear;
+      filter: blur(calc(1 * 1.5rem));
+      opacity: 0.9;
+    }
 
-/* Icon styling */
-.float-dl svg {
-  width: 20px;
-  height: 20px;
-  stroke: #F3F3F3;
-  stroke-width: 2.5;
-}
+    .float-dl:active {
+      transform: translateX(-50%) translateY(1px);
+    }
 
-/* Price tag styling */
-.float-dl .price-tag {
-  font-size: 0.7rem;
-  font-weight: 400;
-  opacity: 0.85;
-  margin-left: 4px;
-}
+    .float-dl svg {
+      width: 20px;
+      height: 20px;
+      stroke: #F3F3F3;
+      stroke-width: 2.5;
+    }
 
-/* Animation keyframes */
-@keyframes gradient-animate {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 200% 50%;
-  }
-}
+    .float-dl .price-tag {
+      font-size: 0.7rem;
+      font-weight: 400;
+      opacity: 0.85;
+      margin-left: 4px;
+    }
 
-/* Responsive adjustments */
-@media (max-width: 1000px) {
-  .float-dl {
-    padding: calc(0.5 * 1.2rem) calc(1 * 1.2rem);
-    border: calc(0.08 * 1.2rem) solid transparent;
-    border-radius: calc(0.7 * 1.2rem);
-    font-size: 0.95rem;
-  }
-  
-  .float-dl::before {
-    filter: blur(calc(0.8 * 1.2rem));
-  }
-  
-  .float-dl:hover::before {
-    filter: blur(calc(1 * 1.2rem));
-  }
-  
-  .float-dl svg {
-    width: 18px;
-    height: 18px;
-  }
-}
-
-@media (max-width: 520px) {
-  .float-dl {
-    padding: calc(0.5 * 1rem) calc(1 * 1rem);
-    border: calc(0.08 * 1rem) solid transparent;
-    border-radius: calc(0.7 * 1rem);
-    font-size: 0.85rem;
-    bottom: 22px;
-    gap: 8px;
-  }
-  
-  .float-dl::before {
-    filter: blur(calc(0.8 * 1rem));
-  }
-  
-  .float-dl:hover::before {
-    filter: blur(calc(1 * 1rem));
-  }
-  
-  .float-dl svg {
-    width: 16px;
-    height: 16px;
-  }
-  
-  .float-dl .price-tag {
-    font-size: 0.65rem;
-  }
-}
-
-/* Remove the old pulse animation since we have new gradient animation */
-.float-dl {
-  animation: gradient-animate 2s infinite linear;
-}
-
-/* Optional: Add a subtle pulse for the price tag */
-.float-dl .price-tag {
-  transition: opacity 0.3s ease;
-}
-
-.float-dl:hover .price-tag {
-  opacity: 1;
-}
+    @keyframes gradient-animate {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
 
     /* ===== MODAL ===== */
     .modal-overlay {
@@ -1106,20 +1012,81 @@
       font-weight: 600;
       color: var(--text-primary);
     }
-    
-    .permissions-list {
+
+    /* ===== EXPANDABLE SECTIONS IN MODAL ===== */
+    .expandable-section {
       margin: 20px 0;
     }
+    
+    .expandable-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+      background: var(--bg-card2);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .expandable-header:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--accent);
+    }
+    
+    .expandable-header h3 {
+      margin: 0;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .expandable-icon {
+      width: 20px;
+      height: 20px;
+      color: var(--accent);
+    }
+    
+    .expandable-chevron {
+      width: 20px;
+      height: 20px;
+      color: var(--text-muted);
+      transition: transform 0.3s ease;
+    }
+    
+    .expandable-section.expanded .expandable-chevron {
+      transform: rotate(180deg);
+    }
+    
+    .expandable-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      padding: 0 16px;
+    }
+    
+    .expandable-section.expanded .expandable-content {
+      max-height: 600px;
+      padding: 16px;
+    }
+    
+    .permissions-list {
+      margin: 0;
+    }
+    
     .permission-item {
       display: flex;
       align-items: flex-start;
       gap: 10px;
       margin-bottom: 12px;
       padding: 12px;
-      background: var(--bg-card2);
+      background: var(--bg-card);
       border-radius: var(--radius-sm);
       border: 1px solid var(--border);
     }
+    
     .permission-icon {
       width: 20px;
       height: 20px;
@@ -1127,15 +1094,18 @@
       flex-shrink: 0;
       margin-top: 2px;
     }
+    
     .permission-text {
       flex: 1;
     }
+    
     .permission-title {
       font-size: .85rem;
       font-weight: 600;
       color: var(--text-primary);
       margin-bottom: 4px;
     }
+    
     .permission-desc {
       font-size: .75rem;
       color: var(--text-muted);
@@ -1143,8 +1113,9 @@
     }
     
     .install-steps {
-      margin: 20px 0;
+      margin: 0;
     }
+    
     .install-step {
       display: flex;
       gap: 12px;
@@ -1152,9 +1123,13 @@
       padding-bottom: 16px;
       border-bottom: 1px solid var(--border);
     }
+    
     .install-step:last-child {
       border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
     }
+    
     .step-number {
       width: 28px;
       height: 28px;
@@ -1168,125 +1143,165 @@
       font-weight: 600;
       flex-shrink: 0;
     }
+    
     .step-content {
       flex: 1;
     }
+    
     .step-title {
       font-size: .85rem;
       font-weight: 600;
       color: var(--text-primary);
       margin-bottom: 4px;
     }
+    
     .step-desc {
       font-size: .78rem;
       color: var(--text-muted);
       line-height: 1.4;
     }
+
+    /* ===== FUTURISTIC DOWNLOAD BUTTON ===== */
     .dl-modal-btns {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 20px;
-  width: 100%;
-  max-width: 600px;
-  padding: 0 1rem;
-}
-
-.dl-modal-btns .input-wrapper {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
-  padding: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-}
-
-.dl-modal-btns .input-wrapper:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 4px 30px -1px rgba(0, 0, 0, 0.3);
-}
-
-.dl-modal-btns button {
-  flex: 1; 
-  padding: 1rem 1.25rem;
-  border-radius: 12px;
-  font-size: 1rem;
-  font-weight: 600;
-  font-family: 'Inter', sans-serif;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-
-.dl-modal-btns .btn-confirm { 
-  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
-  color: #fff;
-}
-
-.dl-modal-btns .btn-cancel { 
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.dl-modal-btns button:hover { 
-  transform: translateY(-2px);
-  box-shadow: 0 5px 20px -2px rgba(79, 70, 229, 0.4);
-}
-
-.dl-modal-btns .btn-cancel:hover {
-  background: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 5px 20px -2px rgba(255, 255, 255, 0.1);
-}
-
-.dl-modal-btns button:active {
-  transform: translateY(1px);
-}
-
-.dl-modal-btns .button-content {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.dl-modal-btns .button-content svg {
-  width: 20px;
-  height: 20px;
-  transition: transform 0.3s ease;
-}
-
-.dl-modal-btns button:hover .button-content svg {
-  transform: translateY(2px);
-}
-
-@media (max-width: 640px) {
-  .dl-modal-btns {
-    padding: 0 0.75rem;
-  }
-  
-  .dl-modal-btns button {
-    padding: 0.875rem 1rem;
-  }
-}
-
-    /* ===== ANIMATIONS ===== */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to   { opacity: 1; transform: translateY(0); }
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 20px;
+      width: 100%;
+      max-width: 600px;
+      padding: 0 1rem;
     }
-    .anim-in { animation: fadeUp .45s cubic-bezier(.4,0,.2,1) both; }
-    .anim-in:nth-child(2) { animation-delay: .08s; }
-    .anim-in:nth-child(3) { animation-delay: .16s; }
-    .anim-in:nth-child(4) { animation-delay: .24s; }
+
+    .futuristic-download-btn {
+      position: relative;
+      width: 100%;
+      padding: 1.2rem 1.5rem;
+      background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+      border: none;
+      border-radius: 14px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: white;
+      cursor: pointer;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+    }
+
+    .futuristic-download-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .futuristic-download-btn:hover::before {
+      left: 100%;
+    }
+
+    .futuristic-download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(99, 102, 241, 0.5);
+    }
+
+    .futuristic-download-btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-icon {
+      width: 24px;
+      height: 24px;
+      transition: transform 0.3s ease;
+    }
+
+    .futuristic-download-btn:hover .btn-icon {
+      transform: translateY(3px);
+    }
+
+    /* Download Progress States */
+    .futuristic-download-btn.downloading {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      pointer-events: none;
+    }
+
+    .futuristic-download-btn.completed {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    }
+
+    /* Progress Bar */
+    .progress-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.8);
+      width: 0%;
+      transition: width 0.1s linear;
+      border-radius: 0 0 14px 14px;
+    }
+
+    /* Loading Spinner */
+    .loading-ring {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    /* Success Checkmark */
+    .checkmark {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+    }
+
+    .checkmark path {
+      stroke-dasharray: 50;
+      stroke-dashoffset: 50;
+      animation: draw-check 0.5s ease forwards;
+    }
+
+    @keyframes draw-check {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    /* Cancel Button */
+    .btn-cancel {
+      width: 100%;
+      padding: 1rem 1.25rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.8);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-cancel:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 520px) {
@@ -1300,25 +1315,41 @@
       .screenshot-phone { height: 190px; }
       .rating-hero { flex-direction: column; text-align: center; }
       .rating-bars { width: 100%; }
-      .float-dl { padding: calc(0.5 * 1rem) calc(1 * 1rem); font-size: 0.85rem; bottom: 22px; gap: 8px; }
+      .float-dl { 
+        padding: calc(0.5 * 1rem) calc(1 * 1rem); 
+        font-size: 0.85rem; 
+        bottom: 22px; 
+        gap: 8px; 
+      }
       .dl-details { grid-template-columns: 1fr; }
       
-      /* Social cards responsive */
+      /* Social cards responsive - FIXED */
       #social-cards {
-        flex-direction: column;
-        align-items: center;
+        grid-template-columns: 1fr;
       }
+      
       .social-card {
-        min-width: 100%;
-        max-width: 280px;
+        width: 100%;
+        min-height: 200px;
+      }
+      
+      .social-card-content {
+        padding: 20px 16px;
+      }
+      
+      .social-card-icon {
+        font-size: 2.5rem;
+      }
+      
+      .social-card-title {
+        font-size: 0.95rem;
       }
     }
     
     @media (min-width: 521px) and (max-width: 779px) {
       .screenshots-grid { grid-template-columns: repeat(2, 1fr); }
-      .social-card {
-        min-width: calc(50% - 9px);
-        max-width: calc(50% - 9px);
+      #social-cards {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
     
@@ -1326,9 +1357,8 @@
       .page-wrap { padding-top: 40px; }
       .screenshots-grid { grid-template-columns: repeat(4, 1fr); }
       .screenshot-phone { height: 210px; }
-      .social-card {
-        min-width: calc(33.333% - 12px);
-        max-width: calc(33.333% - 12px);
+      #social-cards {
+        grid-template-columns: repeat(3, 1fr);
       }
     }
 
@@ -1394,8 +1424,8 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
         Share
       </button>
-            <button class="share-btn" onclick="openDownload()" aria-label="Share this app">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <button class="share-btn" onclick="openDownload()" aria-label="Download this app">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Download
       </button>
     </div>
@@ -1782,69 +1812,71 @@
             <span>Follow Us</span>
           </div>
         </div>
-      </div><!-- Anonymous Card -->
-<div class="social-card" onclick="window.open('https://twet.link/dekutconnect', '_blank')">
-  <div class="social-card-content">
-    <i class="fab fa-font-awesome-alt social-card-icon"></i> <!-- Changed from fa-anonymous -->
-    <div class="social-card-title">Anonymous Enquiry</div>
-    <div class="social-card-button">
-      <i class="fa-solid fa-link"></i>
-      <span>Chat</span>
-    </div>
-  </div>
-</div>
+      </div>
 
-<!-- Telegram Card -->
-<div class="social-card" onclick="window.open('https://t.me/addlist/B7N3JNdzaOo1ZDc8', '_blank')">
-  <div class="social-card-content">
-    <i class="fab fa-telegram social-card-icon"></i> <!-- Fixed: removed 's' from 'telegramsocial' -->
-    <div class="social-card-title">Telegram</div>
-    <div class="social-card-stats">Members: <span>15k</span></div>
-    <div class="social-card-button">
-      <i class="fa-solid fa-link"></i>
-      <span>Join Us</span>
-    </div>
-  </div>
-</div>
+      <!-- Anonymous Card -->
+      <div class="social-card" onclick="window.open('https://twet.link/dekutconnect', '_blank')">
+        <div class="social-card-content">
+          <i class="fas fa-user-secret social-card-icon"></i>
+          <div class="social-card-title">Anonymous Enquiry</div>
+          <div class="social-card-button">
+            <i class="fa-solid fa-link"></i>
+            <span>Chat</span>
+          </div>
+        </div>
+      </div>
 
-<!-- Whatsapp Card -->
-<div class="social-card" onclick="window.open('https://whatsapp.com/channel/0029VbAb8L46WaKx34k8vU0S', '_blank')">
-  <div class="social-card-content">
-    <i class="fab fa-whatsapp social-card-icon"></i>
-    <div class="social-card-title">WhatsApp Channel</div>
-    <div class="social-card-stats">Members: <span>150k</span></div>
-    <div class="social-card-button">
-      <i class="fa-solid fa-link"></i>
-      <span>Join Us</span>
-    </div>
-  </div>
-</div>
+      <!-- Telegram Card -->
+      <div class="social-card" onclick="window.open('https://t.me/addlist/B7N3JNdzaOo1ZDc8', '_blank')">
+        <div class="social-card-content">
+          <i class="fab fa-telegram social-card-icon"></i>
+          <div class="social-card-title">Telegram</div>
+          <div class="social-card-stats">Members: <span>15k</span></div>
+          <div class="social-card-button">
+            <i class="fa-solid fa-link"></i>
+            <span>Join Us</span>
+          </div>
+        </div>
+      </div>
 
-<!-- Whatsapp Card -->
-<div class="social-card" onclick="window.open('https://chat.whatsapp.com/KqVMAYzgQSXAKF4kNuKfWR?mode=hqrt3', '_blank')">
-  <div class="social-card-content">
-    <i class="fab fa-whatsapp social-card-icon"></i>
-    <div class="social-card-title">WhatsApp Group</div>
-    <div class="social-card-stats">Members: <span>1k</span></div>
-    <div class="social-card-button">
-      <i class="fa-solid fa-link"></i>
-      <span>Join Us</span>
-    </div>
-  </div>
-</div>
+      <!-- Whatsapp Channel Card -->
+      <div class="social-card" onclick="window.open('https://whatsapp.com/channel/0029VbAb8L46WaKx34k8vU0S', '_blank')">
+        <div class="social-card-content">
+          <i class="fab fa-whatsapp social-card-icon"></i>
+          <div class="social-card-title">WhatsApp Channel</div>
+          <div class="social-card-stats">Members: <span>150k</span></div>
+          <div class="social-card-button">
+            <i class="fa-solid fa-link"></i>
+            <span>Join Us</span>
+          </div>
+        </div>
+      </div>
 
-<!-- LinkedIn Card -->
-<div class="social-card" onclick="window.open('https://linkedin.com/company/axtra', '_blank')">
-  <div class="social-card-content">
-    <i class="fab fa-linkedin social-card-icon"></i> <!-- Fixed spacing -->
-    <div class="social-card-title">LinkedIn</div>
-    <div class="social-card-stats">Connections: <span>100k</span></div>
-    <div class="social-card-button">
-      <i class="fa-solid fa-link"></i>
-      <span>Connect</span>
-    </div>
-  </div>
-</div>
+      <!-- Whatsapp Group Card -->
+      <div class="social-card" onclick="window.open('https://chat.whatsapp.com/KqVMAYzgQSXAKF4kNuKfWR?mode=hqrt3', '_blank')">
+        <div class="social-card-content">
+          <i class="fab fa-whatsapp social-card-icon"></i>
+          <div class="social-card-title">WhatsApp Group</div>
+          <div class="social-card-stats">Members: <span>1k</span></div>
+          <div class="social-card-button">
+            <i class="fa-solid fa-link"></i>
+            <span>Join Us</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- LinkedIn Card -->
+      <div class="social-card" onclick="window.open('https://linkedin.com/company/axtra', '_blank')">
+        <div class="social-card-content">
+          <i class="fab fa-linkedin social-card-icon"></i>
+          <div class="social-card-title">LinkedIn</div>
+          <div class="social-card-stats">Connections: <span>100k</span></div>
+          <div class="social-card-button">
+            <i class="fa-solid fa-link"></i>
+            <span>Connect</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1868,6 +1900,7 @@
   Download Free
   <span class="price-tag">(Free)</span>
 </button>
+
 
 <!-- ===== TERMS & CONDITIONS MODAL ===== -->
 <div class="modal-overlay" id="termsModal" role="dialog" aria-label="Terms and Conditions">
