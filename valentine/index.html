@@ -31,7 +31,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://axtra.app.eduniapps.com/" />
   <meta property="og:site_name" content="TO YOU MY LOVE on my valentine." />
-  <meta property="og:title" content="Axtra – Stream Unlimited Movies, Shows & Music Free" />
+  <meta property="og:title" content="Valentine wishes." />
   <meta property="og:description" content="Share your valentine love" />
   <meta property="og:image" content="https://i.ebayimg.com/images/g/skoAAeSwNn1pTpbO/s-l1600.webp" />
   <meta property="og:image:secure_url" content="https://i.postimg.cc/MKrsKjvz/An-y62KY6-sop-Mm-z1BL8B7HZKVfe-N2Yz-u-J3SLDI1vwepewwb4-JBAEmx-Koys98UMLei-H3Ty6-c-UNJFXBb-SL4HPRNsg.jpg" />
@@ -372,19 +372,19 @@
     .share-cta {
       background: linear-gradient(135deg, #ff1a5a 0%, #ff4d7a 100%);
       border: none;
-      border-radius: 60px;
-      padding: 1.3rem 3.5rem;
+      border-radius: 50px;
+      padding: 0.9rem 2.2rem;
       color: white;
-      font-weight: 900;
-      font-size: 1.4rem;
-      letter-spacing: 3px;
-      border: 4px solid #fff;
-      box-shadow: 0 15px 45px rgba(255, 26, 90, 0.7);
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      border: 3px solid #fff;
+      box-shadow: 0 12px 35px rgba(255, 26, 90, 0.6);
       cursor: pointer;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       display: inline-flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       position: relative;
       overflow: hidden;
       text-transform: uppercase;
@@ -409,8 +409,8 @@
     }
 
     .share-cta:hover {
-      transform: translateY(-6px) scale(1.08);
-      box-shadow: 0 20px 60px rgba(255, 26, 90, 0.9);
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 15px 45px rgba(255, 26, 90, 0.8);
     }
 
     .share-cta span {
@@ -580,34 +580,6 @@
       transform: translateY(-2px);
     }
 
-    .quick-messages {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .quick-msg-btn {
-      background: rgba(255, 100, 140, 0.1);
-      border: 2px solid #ffb3ce;
-      color: #a02050;
-      padding: 1rem 1.5rem;
-      border-radius: 30px;
-      cursor: pointer;
-      text-align: left;
-      font-size: 1rem;
-      font-weight: 600;
-      transition: all 0.3s;
-      line-height: 1.5;
-    }
-
-    .quick-msg-btn:hover {
-      background: #ff6b9d;
-      color: white;
-      border-color: #ff6b9d;
-      transform: translateX(10px);
-    }
-
     /* Mobile Optimizations */
     @media (max-width: 768px) {
       .modal-content {
@@ -629,8 +601,8 @@
       }
 
       .share-cta {
-        padding: 1.1rem 2.5rem;
-        font-size: 1.2rem;
+        padding: 0.8rem 1.8rem;
+        font-size: 1rem;
       }
 
       .share-section {
@@ -716,9 +688,7 @@
 
     <div class="romantic-message">
       <button class="share-cta" id="shareCTA">
-        <span>💌</span>
         <span>Share Your Message</span>
-        <span>💌</span>
       </button>
     </div>
   </div>
@@ -730,24 +700,12 @@
     <div class="share-container">
       <h2 class="section-title">Create Your Love Message 💕</h2>
 
-      <div class="quick-messages">
-        <button class="quick-msg-btn" data-msg="You make my heart skip a beat every single day. Be mine forever? 💕">
-          "You make my heart skip a beat every single day..."
-        </button>
-        <button class="quick-msg-btn" data-msg="In a sea of people, my eyes will always search for you. You're my everything. 💖">
-          "In a sea of people, my eyes will always search for you..."
-        </button>
-        <button class="quick-msg-btn" data-msg="I choose you. Today, tomorrow, and for all the days to come. Forever yours. 💝">
-          "I choose you. Today, tomorrow, and forever..."
-        </button>
-      </div>
-
       <div class="message-input-group">
         <input 
           type="text" 
           id="loveMessageInput" 
           class="love-input" 
-          placeholder="Write your heart's desire here... ✨💕"
+          placeholder=""
           autofocus
         >
         <button id="generateBtn" class="generate-btn">
@@ -869,10 +827,18 @@
         let particleRate = settings.particles.length / settings.particles.duration;
         let time;
 
+        // Responsive scale factor
+        let scaleFactor = 1;
+        
+        function updateScaleFactor() {
+          const minDimension = Math.min(window.innerWidth, window.innerHeight);
+          scaleFactor = Math.min(minDimension / 600, 1);
+        }
+
         function pointOnHeart(t) {
           return new Point(
-            160 * Math.pow(Math.sin(t), 3),
-            130 * Math.cos(t) - 50 * Math.cos(2 * t) - 20 * Math.cos(3 * t) - 10 * Math.cos(4 * t) + 25
+            160 * Math.pow(Math.sin(t), 3) * scaleFactor,
+            (130 * Math.cos(t) - 50 * Math.cos(2 * t) - 20 * Math.cos(3 * t) - 10 * Math.cos(4 * t) + 25) * scaleFactor
           );
         }
 
@@ -916,9 +882,17 @@
           particles.draw(context, image);
         }
 
-        function onResize() { canvas.width = canvas.clientWidth; canvas.height = canvas.clientHeight; }
+        function onResize() { 
+          canvas.width = canvas.clientWidth; 
+          canvas.height = canvas.clientHeight; 
+          updateScaleFactor();
+        }
+        
         window.addEventListener('resize', onResize);
-        setTimeout(() => { onResize(); render(); }, 20);
+        setTimeout(() => { 
+          onResize(); 
+          render(); 
+        }, 20);
       })();
 
       (function initSecondHeart() {
@@ -930,8 +904,19 @@
         let width, height;
         let rand = Math.random;
 
+        // Responsive scale for heart
+        let heartScale = 1;
+        
+        function updateHeartScale() {
+          const minDimension = Math.min(window.innerWidth, window.innerHeight);
+          heartScale = Math.min(minDimension / 800, 1);
+        }
+
         function heartPosition(rad) {
-          return [Math.pow(Math.sin(rad), 3), -(15 * Math.cos(rad) - 5 * Math.cos(2 * rad) - 2 * Math.cos(3 * rad) - Math.cos(4 * rad))];
+          return [
+            Math.pow(Math.sin(rad), 3) * heartScale, 
+            -(15 * Math.cos(rad) - 5 * Math.cos(2 * rad) - 2 * Math.cos(3 * rad) - Math.cos(4 * rad)) * heartScale
+          ];
         }
 
         function scaleAndTranslate(pos, sx, sy, dx, dy) {
@@ -941,9 +926,15 @@
         let traceCount = mobile ? 20 : 50;
         let pointsOrigin = [];
         let dr = mobile ? 0.3 : 0.1;
-        for (let i = 0; i < Math.PI * 2; i += dr) pointsOrigin.push(scaleAndTranslate(heartPosition(i), 210, 13, 0, 0));
-        for (let i = 0; i < Math.PI * 2; i += dr) pointsOrigin.push(scaleAndTranslate(heartPosition(i), 150, 9, 0, 0));
-        for (let i = 0; i < Math.PI * 2; i += dr) pointsOrigin.push(scaleAndTranslate(heartPosition(i), 90, 5, 0, 0));
+        
+        function generateHeartPoints() {
+          pointsOrigin = [];
+          for (let i = 0; i < Math.PI * 2; i += dr) pointsOrigin.push(scaleAndTranslate(heartPosition(i), 210, 13, 0, 0));
+          for (let i = 0; i < Math.PI * 2; i += dr) pointsOrigin.push(scaleAndTranslate(heartPosition(i), 150, 9, 0, 0));
+          for (let i = 0; i < Math.PI * 2; i += dr) pointsOrigin.push(scaleAndTranslate(heartPosition(i), 90, 5, 0, 0));
+        }
+        
+        generateHeartPoints();
         let heartPointsCount = pointsOrigin.length;
         let targetPoints = [];
 
@@ -972,9 +963,12 @@
         function resizeCanvas() {
           width = canvas.width = koef * innerWidth;
           height = canvas.height = koef * innerHeight;
+          updateHeartScale();
+          generateHeartPoints();
           ctx.fillStyle = "rgba(0,0,0,1)";
           ctx.fillRect(0, 0, width, height);
         }
+        
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
