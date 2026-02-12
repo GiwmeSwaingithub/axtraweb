@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
-  <title>💕 Valentine's Hearts · Share Your Love</title>
+  <title>💕 Valentine's Hearts · Be My Valentine</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -30,11 +30,11 @@
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://axtra.app.eduniapps.com/" />
-  <meta property="og:site_name" content="Axtra App. Valentine." />
-  <meta property="og:title" content="Share Valentine with your friends." />
-  <meta property="og:description" content="Download Axtra today and enjoy unlimited streaming on any device. Free entertainment app with 4.8★ rating. Available for Android, iOS, Windows & Smart TV." />
+  <meta property="og:site_name" content="TO YOU MY LOVE on my valentine." />
+  <meta property="og:title" content="Axtra – Stream Unlimited Movies, Shows & Music Free" />
+  <meta property="og:description" content="Share your valentine love" />
   <meta property="og:image" content="https://i.ebayimg.com/images/g/skoAAeSwNn1pTpbO/s-l1600.webp" />
-  <meta property="og:image:secure_url" content="https://i.ebayimg.com/images/g/skoAAeSwNn1pTpbO/s-l1600.webp" />
+  <meta property="og:image:secure_url" content="https://i.postimg.cc/MKrsKjvz/An-y62KY6-sop-Mm-z1BL8B7HZKVfe-N2Yz-u-J3SLDI1vwepewwb4-JBAEmx-Koys98UMLei-H3Ty6-c-UNJFXBb-SL4HPRNsg.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Axtra Entertainment App - Stream Movies, Shows & Music" />
@@ -92,7 +92,7 @@
     "@type": "Organization",
     "name": "Axtra Tech",
     "url": "https://axtra.app.eduniapps.com",
-    "logo": "https://i.ebayimg.com/images/g/skoAAeSwNn1pTpbO/s-l1600.webp",
+    "logo": "https://i.postimg.cc/MKrsKjvz/An-y62KY6-sop-Mm-z1BL8B7HZKVfe-N2Yz-u-J3SLDI1vwepewwb4-JBAEmx-Koys98UMLei-H3Ty6-c-UNJFXBb-SL4HPRNsg.jpg",
     "sameAs": [
       "https://facebook.com/axtraapp",
       "https://x.com/dekutconnect",
@@ -118,7 +118,6 @@
   </script>
 
   <style>
-    
     * {
       margin: 0;
       padding: 0;
@@ -127,19 +126,20 @@
 
     html, body {
       width: 100%;
+      height: 100%;
       background: #0a0305;
-      font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+      font-family: 'Georgia', 'Times New Roman', serif;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
 
+    /* Heart Canvas Background */
     .heart-canvases {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100vh;
-      height: 100dvh; /* dynamic viewport for mobile */
       z-index: 1;
       pointer-events: none;
     }
@@ -166,150 +166,61 @@
       mix-blend-mode: lighten;
     }
 
-    .love-banner {
+    /* Pop-up Modal */
+    .modal-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      z-index: 50;
-      background: rgba(255, 20, 80, 0.15);
-      backdrop-filter: blur(25px);
-      -webkit-backdrop-filter: blur(25px);
-      border-bottom: 2px solid rgba(255, 100, 150, 0.4);
-      color: #fff;
-      text-align: center;
-      padding: 0.75rem 1rem;
-      font-size: clamp(0.75rem, 3.5vw, 0.95rem);
-      font-weight: 700;
-      letter-spacing: 2.5px;
-      text-shadow: 0 0 20px #ff3b7a, 0 0 40px #ff1a55;
-      box-shadow: 0 4px 25px rgba(255, 60, 110, 0.3);
-    }
-
-    .love-banner span {
-      background: rgba(200, 20, 80, 0.25);
-      padding: 0.4rem 1.5rem;
-      border-radius: 50px;
-      border: 1.5px solid rgba(255, 150, 180, 0.6);
-      backdrop-filter: blur(8px);
-      display: inline-block;
-    }
-
-    .heart-view-area {
-      position: relative;
-      width: 100%;
       height: 100vh;
-      height: 100dvh;
-      z-index: 5;
-      pointer-events: none;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      padding-bottom: 2rem;
-    }
-
-    .scroll-hint {
-      position: absolute;
-      bottom: 3rem;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 10;
-      pointer-events: auto;
-      animation: bounce 2s infinite;
-      cursor: pointer;
-      background: rgba(255, 40, 90, 0.9);
-      padding: 0.8rem 1.8rem;
-      border-radius: 50px;
-      border: 2px solid #fff;
-      color: white;
-      font-weight: 700;
-      font-size: 0.95rem;
-      letter-spacing: 2px;
-      box-shadow: 0 8px 30px rgba(255, 40, 90, 0.6);
-      text-shadow: 0 0 15px #fff;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(-10px); }
-    }
-
-    .hearts-counter {
-      position: fixed;
-      top: 4.5rem;
-      right: 1rem;
-      z-index: 51;
-      background: rgba(255, 40, 90, 0.95);
-      backdrop-filter: blur(15px);
-      padding: 0.6rem 1.2rem;
-      border-radius: 50px;
-      border: 2px solid #fff;
-      color: white;
-      font-weight: 700;
-      font-size: 1.1rem;
-      box-shadow: 0 6px 25px rgba(255, 40, 90, 0.5);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-
-    .valentine-lane {
-      position: relative;
-      z-index: 30;
-      width: 100%;
-      background: linear-gradient(160deg, #ffe0e8 0%, #fff0f5 40%, #fff8fa 100%);
-      border-top: 8px solid #ff8fb3;
-      box-shadow: 0 -20px 60px rgba(255, 80, 130, 0.6);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 2.5rem 1.5rem 3rem;
-      border-radius: 60px 60px 0 0;
-      min-height: 100vh;
-    }
-
-    .message-section {
-      width: 100%;
-      max-width: 900px;
-      margin-bottom: 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .message-bubble {
-      display: inline-block;
-      background: linear-gradient(135deg, #ff2a6d 0%, #ff5891 100%);
+      background: rgba(0, 0, 0, 0.75);
       backdrop-filter: blur(10px);
-      border-radius: 50px 50px 50px 15px;
-      padding: 1.5rem 2.5rem;
-      border: 4px solid #fff;
-      box-shadow: 0 20px 50px rgba(255, 42, 109, 0.6), 
-                  0 0 0 3px rgba(255, 200, 220, 0.4);
-      color: white;
-      text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
-      font-size: clamp(1.3rem, 5vw, 2.2rem);
-      font-weight: 800;
-      letter-spacing: 1px;
-      word-break: break-word;
-      max-width: 100%;
-      line-height: 1.5;
-      text-align: center;
-      position: relative;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      opacity: 1;
+      transition: opacity 0.5s ease;
     }
 
-    .message-bubble.truncated {
+    .modal-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .modal-content {
+      background: linear-gradient(135deg, #fff0f5 0%, #ffe0e8 100%);
+      border: 5px solid #ff6b9d;
+      border-radius: 40px;
+      padding: 2.5rem 2rem;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 30px 80px rgba(255, 20, 80, 0.6);
+      position: relative;
+      animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0) rotate(-10deg); opacity: 0; }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+
+    .modal-message {
+      font-size: clamp(1.3rem, 4vw, 1.9rem);
+      font-weight: 700;
+      color: #d4145a;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      text-shadow: 1px 1px 3px rgba(255, 100, 140, 0.3);
+      letter-spacing: 0.5px;
+      text-align: center;
+    }
+
+    .modal-message.truncated {
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
@@ -318,105 +229,168 @@
       white-space: normal;
     }
 
-    .message-bubble.expanded {
+    .modal-message.expanded {
       display: block;
     }
 
-    .see-more-btn {
-      margin-top: 1rem;
-      background: rgba(255, 255, 255, 0.95);
+    .see-more-modal {
+      background: rgba(255, 255, 255, 0.9);
       border: 2px solid #ff6b9d;
       color: #d4145a;
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 700;
-      padding: 0.6rem 2rem;
+      padding: 0.6rem 1.8rem;
       border-radius: 50px;
-      letter-spacing: 2px;
+      letter-spacing: 1px;
       cursor: pointer;
       transition: all 0.3s;
-      box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+      margin-bottom: 1.5rem;
+      display: inline-block;
     }
 
-    .see-more-btn:hover {
+    .see-more-modal:hover {
       background: #ff6b9d;
       color: white;
       transform: translateY(-2px);
-      box-shadow: 0 6px 25px rgba(255, 107, 157, 0.5);
+      box-shadow: 0 6px 20px rgba(255, 107, 157, 0.4);
     }
 
-    /* ----- INTERACTION CARD ----- */
-    .interaction-card {
-      background: rgba(255, 255, 255, 0.98);
-      backdrop-filter: blur(20px);
-      border-radius: 70px;
-      padding: 1.5rem 2rem;
+    .modal-question {
+      font-size: clamp(1.3rem, 4vw, 1.8rem);
+      color: #a02050;
+      margin-bottom: 2rem;
+      font-weight: 700;
+      font-style: italic;
+    }
+
+    .modal-buttons {
       display: flex;
+      gap: 1.5rem;
+      justify-content: center;
       flex-wrap: wrap;
+    }
+
+    .modal-btn {
+      padding: 1.2rem 3rem;
+      font-size: 1.3rem;
+      font-weight: 800;
+      border-radius: 50px;
+      border: 3px solid;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-yes {
+      background: linear-gradient(135deg, #ff1a5a 0%, #ff4d7a 100%);
+      border-color: #fff;
+      color: white;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-yes:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(255, 26, 90, 0.6);
+    }
+
+    .btn-no {
+      background: rgba(255, 255, 255, 0.9);
+      border-color: #ff6b9d;
+      color: #d4145a;
+      position: relative;
+    }
+
+    /* Main Content - Hidden Initially */
+    .main-content {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: 50;
+      display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 1.2rem;
-      border: 3px solid #ffb3ce;
-      box-shadow: 0 15px 50px rgba(255, 77, 109, 0.4);
-      max-width: 900px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.8s ease;
+    }
+
+    .main-content.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .love-banner {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
+      z-index: 60;
+      background: rgba(255, 20, 80, 0.2);
+      backdrop-filter: blur(25px);
+      border-bottom: 3px solid rgba(255, 100, 150, 0.5);
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      font-size: clamp(0.85rem, 3vw, 1.1rem);
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-shadow: 0 0 20px #ff3b7a;
+    }
+
+    .romantic-message {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 240, 245, 0.95);
+      backdrop-filter: blur(20px);
+      border: 5px solid #ff8fb3;
+      border-radius: 60px;
+      padding: 1.5rem 2rem;
+      box-shadow: 0 30px 80px rgba(255, 60, 110, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 55;
+    }
+
+    .romantic-text {
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      color: #d4145a;
+      font-weight: 700;
+      line-height: 1.6;
+      text-align: center;
+      text-shadow: 1px 1px 3px rgba(255, 150, 180, 0.3);
       margin-bottom: 2rem;
     }
 
-    .love-input {
-      background: #fff;
-      border: 3px solid #ffaac8;
-      border-radius: 50px;
-      padding: 1.1rem 2rem;
-      font-size: 1.15rem;
-      font-weight: 500;
-      color: #2a0a15;
-      outline: none;
-      width: 100%;
-      max-width: 450px;
-      flex: 1 1 280px;
-      caret-color: #ff1a5a;
-      font-family: inherit;
-      box-shadow: inset 0 2px 8px rgba(255, 100, 140, 0.15);
-      transition: all 0.3s;
-    }
-
-    .love-input:focus {
-      border-color: #ff3b7a;
-      background: #fffbfd;
-      box-shadow: 0 0 0 5px rgba(255, 59, 122, 0.15), 
-                  inset 0 2px 8px rgba(255, 59, 122, 0.1);
-      transform: translateY(-2px);
-    }
-
-    .love-input::placeholder {
-      color: #a14560;
-      font-style: italic;
-      font-weight: 400;
-    }
-
-    /* ----- SEXY SHARE BUTTON ----- */
-    .share-button {
+    .share-cta {
       background: linear-gradient(135deg, #ff1a5a 0%, #ff4d7a 100%);
       border: none;
       border-radius: 60px;
-      padding: 1.1rem 2.8rem;
+      padding: 1.3rem 3.5rem;
       color: white;
-      font-weight: 800;
-      font-size: 1.25rem;
+      font-weight: 900;
+      font-size: 1.4rem;
       letter-spacing: 3px;
-      border: 3px solid #fff;
-      box-shadow: 0 10px 35px rgba(255, 26, 90, 0.6);
+      border: 4px solid #fff;
+      box-shadow: 0 15px 45px rgba(255, 26, 90, 0.7);
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      display: flex;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-flex;
       align-items: center;
-      gap: 10px;
-      white-space: nowrap;
+      gap: 12px;
       position: relative;
       overflow: hidden;
+      text-transform: uppercase;
     }
 
-    .share-button::before {
+    .share-cta::before {
       content: '';
       position: absolute;
       top: 50%;
@@ -429,311 +403,272 @@
       transition: width 0.6s, height 0.6s;
     }
 
-    .share-button:hover::before {
-      width: 300px;
-      height: 300px;
+    .share-cta:hover::before {
+      width: 400px;
+      height: 400px;
     }
 
-    .share-button:hover {
-      transform: translateY(-4px) scale(1.05);
-      box-shadow: 0 15px 45px rgba(255, 26, 90, 0.8);
+    .share-cta:hover {
+      transform: translateY(-6px) scale(1.08);
+      box-shadow: 0 20px 60px rgba(255, 26, 90, 0.9);
     }
 
-    .share-button:active {
-      transform: translateY(-2px) scale(1.02);
-    }
-
-    .share-button span {
+    .share-cta span {
       position: relative;
       z-index: 1;
     }
 
-    /* ----- QUICK ACTION BUTTONS (gamification) ----- */
-    .quick-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      justify-content: center;
-      margin-bottom: 2rem;
-      max-width: 900px;
+    /* Share Section - Hidden Until CTA Clicked */
+    .share-section {
+      position: fixed;
+      bottom: -100%;
+      left: 0;
       width: 100%;
+      background: linear-gradient(160deg, #ffe0e8 0%, #fff0f5 100%);
+      border-top: 6px solid #ff8fb3;
+      box-shadow: 0 -20px 60px rgba(255, 80, 130, 0.6);
+      padding: 2.5rem 1.5rem;
+      border-radius: 60px 60px 0 0;
+      z-index: 70;
+      transition: bottom 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      max-height: 85vh;
+      overflow-y: auto;
     }
 
-    .quick-action-btn {
-      background: rgba(255, 100, 140, 0.15);
-      backdrop-filter: blur(10px);
-      border: 2px solid #ffb3ce;
-      color: #a02050;
-      font-size: 0.9rem;
-      font-weight: 600;
-      padding: 0.7rem 1.5rem;
-      border-radius: 40px;
-      cursor: pointer;
-      transition: all 0.3s;
-      letter-spacing: 1px;
+    .share-section.visible {
+      bottom: 0;
     }
 
-    .quick-action-btn:hover {
-      background: #ff6b9d;
-      color: white;
-      border-color: #ff6b9d;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(255, 107, 157, 0.4);
+    .share-container {
+      max-width: 800px;
+      margin: 0 auto;
     }
 
-    /* ----- LINK PREVIEW ----- */
-    .link-preview {
-      font-size: 1rem;
-      color: #2a0a15;
-      background: rgba(255, 240, 245, 0.95);
-      backdrop-filter: blur(15px);
-      padding: 1.2rem 2rem;
-      border-radius: 60px;
-      word-break: break-all;
+    .close-share {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid #ff6b9d;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
       justify-content: center;
-      gap: 1rem;
-      border: 3px solid #ffc4d6;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      color: #d4145a;
+      font-weight: 900;
+    }
+
+    .close-share:hover {
+      background: #ff6b9d;
+      color: white;
+      transform: rotate(90deg) scale(1.1);
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      color: #d4145a;
+      text-align: center;
       margin-bottom: 2rem;
-      max-width: 900px;
+      font-weight: 900;
+      text-shadow: 2px 2px 4px rgba(255, 100, 140, 0.3);
+    }
+
+    .message-input-group {
+      background: rgba(255, 255, 255, 0.95);
+      border: 4px solid #ffb3ce;
+      border-radius: 50px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 15px 50px rgba(255, 77, 109, 0.3);
+    }
+
+    .love-input {
+      background: #fff;
+      border: 3px solid #ffaac8;
+      border-radius: 30px;
+      padding: 1.2rem 2rem;
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: #2a0a15;
+      outline: none;
       width: 100%;
-      box-shadow: 0 8px 35px rgba(255, 107, 157, 0.35);
+      font-family: inherit;
+      margin-bottom: 1.5rem;
+      transition: all 0.3s;
+    }
+
+    .love-input:focus {
+      border-color: #ff3b7a;
+      box-shadow: 0 0 0 4px rgba(255, 59, 122, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .love-input::placeholder {
+      color: #a14560;
+      font-style: italic;
+    }
+
+    .generate-btn {
+      background: linear-gradient(135deg, #ff1a5a 0%, #ff4d7a 100%);
+      border: none;
+      border-radius: 50px;
+      padding: 1.2rem 3rem;
+      color: white;
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      border: 3px solid #fff;
+      box-shadow: 0 10px 35px rgba(255, 26, 90, 0.6);
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.3s;
+    }
+
+    .generate-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 45px rgba(255, 26, 90, 0.8);
+    }
+
+    .link-preview {
+      background: rgba(255, 240, 245, 0.95);
+      border: 3px solid #ffc4d6;
+      border-radius: 40px;
+      padding: 1.5rem 2rem;
+      margin-bottom: 1.5rem;
+      display: none;
+      text-align: center;
+    }
+
+    .link-preview.visible {
+      display: block;
     }
 
     .link-preview a {
       color: #c02060;
       text-decoration: none;
-      border-bottom: 2.5px dotted #ff6b9d;
+      border-bottom: 2px dotted #ff6b9d;
       font-weight: 700;
-      word-break: break-word;
+      word-break: break-all;
       transition: all 0.3s;
     }
 
     .link-preview a:hover {
       color: #ff1a5a;
-      border-bottom: 2.5px solid #ff1a5a;
+      border-bottom: 2px solid #ff1a5a;
     }
 
-    #copyHint {
-      cursor: pointer;
+    .copy-btn {
       background: #fff;
-      padding: 0.6rem 1.6rem;
-      border-radius: 50px;
-      transition: all 0.3s;
+      border: 2px solid #ff6b9d;
+      border-radius: 30px;
+      padding: 0.8rem 2rem;
+      color: #d4145a;
       font-weight: 700;
-      color: #a02050;
-      white-space: nowrap;
-      border: 2px solid #ffb3ce;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: all 0.3s;
     }
 
-    #copyHint:hover {
+    .copy-btn:hover {
       background: #ff6b9d;
       color: white;
       transform: translateY(-2px);
-      box-shadow: 0 4px 20px rgba(255, 107, 157, 0.4);
     }
 
-    /* ----- SOCIAL SHARE BUTTONS (gamification) ----- */
-    .social-share {
+    .quick-messages {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       gap: 1rem;
-      justify-content: center;
       margin-bottom: 2rem;
-      max-width: 900px;
-      width: 100%;
     }
 
-    .social-btn {
-      background: rgba(255, 255, 255, 0.95);
+    .quick-msg-btn {
+      background: rgba(255, 100, 140, 0.1);
       border: 2px solid #ffb3ce;
-      border-radius: 50px;
-      padding: 0.8rem 1.8rem;
-      font-weight: 700;
-      font-size: 1rem;
+      color: #a02050;
+      padding: 1rem 1.5rem;
+      border-radius: 30px;
       cursor: pointer;
+      text-align: left;
+      font-size: 1rem;
+      font-weight: 600;
       transition: all 0.3s;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      letter-spacing: 1px;
+      line-height: 1.5;
     }
 
-    .social-btn.twitter {
-      color: #1DA1F2;
+    .quick-msg-btn:hover {
+      background: #ff6b9d;
+      color: white;
+      border-color: #ff6b9d;
+      transform: translateX(10px);
     }
 
-    .social-btn.whatsapp {
-      color: #25D366;
-    }
-
-    .social-btn.facebook {
-      color: #4267B2;
-    }
-
-    .social-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-      border-width: 3px;
-    }
-
-    /* ----- STATS SECTION (gamification) ----- */
-    .stats-section {
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(15px);
-      border-radius: 50px;
-      padding: 1.5rem 2rem;
-      border: 3px solid #ffc4d6;
-      box-shadow: 0 10px 40px rgba(255, 107, 157, 0.3);
-      max-width: 900px;
-      width: 100%;
-      margin-bottom: 2rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: space-around;
-    }
-
-    .stat-item {
-      text-align: center;
-      flex: 1 1 120px;
-    }
-
-    .stat-number {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: #ff1a5a;
-      text-shadow: 0 2px 10px rgba(255, 26, 90, 0.3);
-      display: block;
-    }
-
-    .stat-label {
-      font-size: 0.9rem;
-      color: #a02050;
-      font-weight: 600;
-      letter-spacing: 1px;
-      margin-top: 0.3rem;
-    }
-
-    .credit-love {
-      margin-top: 2rem;
-      color: #a02050;
-      font-size: 0.9rem;
-      letter-spacing: 2px;
-      font-weight: 600;
-      text-shadow: 0 0 15px rgba(255, 200, 220, 0.5);
-      text-align: center;
-    }
-
-    /* ----- MOBILE OPTIMIZATIONS ----- */
+    /* Mobile Optimizations */
     @media (max-width: 768px) {
-      .love-banner {
-        padding: 0.6rem 0.8rem;
-        font-size: 0.75rem;
-        letter-spacing: 1.5px;
+      .modal-content {
+        padding: 2rem 1.5rem;
       }
 
-      .love-banner span {
-        padding: 0.3rem 1rem;
+      .modal-message {
+        font-size: 1.8rem;
       }
 
-      .hearts-counter {
-        top: 3.8rem;
-        right: 0.8rem;
-        padding: 0.5rem 1rem;
-        font-size: 0.95rem;
-      }
-
-      .scroll-hint {
-        bottom: 2rem;
-        padding: 0.7rem 1.5rem;
-        font-size: 0.85rem;
-      }
-
-      .valentine-lane {
-        padding: 2rem 1rem 2.5rem;
-        border-radius: 40px 40px 0 0;
-      }
-
-      .message-bubble {
-        padding: 1.2rem 1.8rem;
-        font-size: 1.3rem;
-        border-radius: 40px 40px 40px 12px;
-      }
-
-      .interaction-card {
-        padding: 1.2rem 1.5rem;
-        border-radius: 50px;
-      }
-
-      .love-input {
-        padding: 1rem 1.5rem;
-        font-size: 1rem;
-      }
-
-      .share-button {
-        padding: 1rem 2.2rem;
+      .modal-btn {
+        padding: 1rem 2rem;
         font-size: 1.1rem;
       }
 
-      .link-preview {
-        flex-direction: column;
+      .romantic-message {
+        bottom: 1rem;
         padding: 1rem 1.5rem;
       }
 
-      .stats-section {
-        padding: 1.2rem 1.5rem;
-        gap: 1.5rem;
+      .share-cta {
+        padding: 1.1rem 2.5rem;
+        font-size: 1.2rem;
       }
 
-      .stat-number {
-        font-size: 2rem;
+      .share-section {
+        padding: 2rem 1rem;
       }
     }
 
-    /* ----- CLICKABLE HEARTS OVERLAY (gamification) ----- */
-    .clickable-hearts {
+    /* Floating Hearts Animation */
+    .floating-hearts {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100vh;
-      z-index: 15;
       pointer-events: none;
+      z-index: 80;
     }
 
-    .floating-heart {
+    .floating-heart-emoji {
       position: absolute;
-      font-size: 2rem;
-      cursor: pointer;
-      pointer-events: auto;
-      animation: float 4s ease-in-out infinite;
-      user-select: none;
-      transition: all 0.3s;
+      font-size: 2.5rem;
+      animation: floatUp 6s ease-in-out infinite;
+      opacity: 0;
     }
 
-    .floating-heart:hover {
-      transform: scale(1.3);
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-20px) rotate(5deg); }
-    }
-
-    .collected-animation {
-      animation: collect 0.6s ease-out forwards;
-    }
-
-    @keyframes collect {
+    @keyframes floatUp {
       0% {
-        transform: scale(1) rotate(0deg);
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
         opacity: 1;
       }
       100% {
-        transform: scale(0) rotate(360deg) translateY(-100px);
+        transform: translateY(-100px) rotate(360deg);
         opacity: 0;
       }
     }
@@ -741,73 +676,96 @@
 </head>
 <body>
 
-  <!-- ========== FIXED HEART ANIMATIONS ========== -->
+  <!-- Heart Canvas Background -->
   <div class="heart-canvases">
     <canvas id="pinkboard"></canvas>
     <canvas id="heart"></canvas>
   </div>
 
-  <!-- ========== CLICKABLE HEARTS LAYER (gamification) ========== -->
-  <div class="clickable-hearts" id="clickableHearts"></div>
+  <!-- Floating Hearts Container -->
+  <div class="floating-hearts" id="floatingHearts"></div>
 
-  <!-- ========== TOP BANNER ========== -->
-  <div class="love-banner">
-    <span>💘 SHARE YOUR HEART · SPREAD THE LOVE 💘</span>
-  </div>
-
-  <!-- ========== HEARTS COUNTER (gamification) ========== -->
-  <div class="hearts-counter">
-    <span>💕</span>
-    <span id="heartCount">0</span>
-  </div>
-
-  <!-- ========== HEART VIEWING AREA ========== -->
-  <div class="heart-view-area">
-    <div class="scroll-hint" id="scrollHint">
-      <span>💝</span> Share Your Love <span>💝</span>
-    </div>
-  </div>
-
-  <!-- ========== MAIN CONTENT (below hearts) ========== -->
-  <div class="valentine-lane">
-    
-    <!-- MESSAGE DISPLAY -->
-    <div class="message-section">
-      <div class="message-bubble truncated" id="heartMessage">
-        💗 Be my Valentine? 💗
+  <!-- Pop-up Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-content">
+      <div class="modal-message truncated" id="modalMessage">
+        💝 You are the light of my life, the beat of my heart, and the love of my soul. Every moment with you is a treasure, every memory a gift. Will you be mine, today and always? 💕✨
       </div>
-      <button id="seeMoreBtn" class="see-more-btn">
-        <span>💕</span> see more <span>💕</span>
+      <button id="seeMoreModal" class="see-more-modal">
+        💕 see more
+      </button>
+      <div class="modal-question">
+        Do you love me? 💕
+      </div>
+      <div class="modal-buttons">
+        <button class="modal-btn btn-yes" id="btnYes">
+          💖 Yes! 💖
+        </button>
+        <button class="modal-btn btn-no" id="btnNo">
+          No
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content (Hidden until "Yes" is clicked) -->
+  <div class="main-content" id="mainContent">
+    <div class="love-banner">
+      💘 MY HEART BELONGS TO YOU 💘
+    </div>
+
+    <div class="romantic-message">
+      <button class="share-cta" id="shareCTA">
+        <span>💌</span>
+        <span>Share Your Message</span>
+        <span>💌</span>
       </button>
     </div>
+  </div>
 
-    <!-- QUICK ACTIONS (gamification) -->
-    <div class="quick-actions">
-      <button class="quick-action-btn" data-msg="💕 You make my heart skip a beat! Be mine? 💕">💕 Sweet & Simple</button>
-      <button class="quick-action-btn" data-msg="🌹 Roses are red, violets are blue, there's no one I'd rather spend forever with than you 🌹">🌹 Poetic Love</button>
-      <button class="quick-action-btn" data-msg="🔥 You're not just my Valentine... you're my everything. Today, tomorrow, always. 🔥">🔥 Passionate</button>
-      <button class="quick-action-btn" data-msg="✨ In a world full of temporary things, you are my forever ✨">✨ Forever Love</button>
-    </div>
+  <!-- Share Section (Slides up from bottom) -->
+  <div class="share-section" id="shareSection">
+    <button class="close-share" id="closeShare">×</button>
+    
+    <div class="share-container">
+      <h2 class="section-title">Create Your Love Message 💕</h2>
 
-    <!-- INPUT & SHARE -->
-    <div class="interaction-card">
-      <input type="text" id="loveMessageInput" class="love-input" 
-             placeholder="✍️ Write your heart out... unlimited love" 
-             autofocus>
-      <button id="generateShareBtn" class="share-button">
-        <span>🔗</span>
-        <span>SHARE LOVE</span>
-      </button>
-    </div>
+      <div class="quick-messages">
+        <button class="quick-msg-btn" data-msg="You make my heart skip a beat every single day. Be mine forever? 💕">
+          "You make my heart skip a beat every single day..."
+        </button>
+        <button class="quick-msg-btn" data-msg="In a sea of people, my eyes will always search for you. You're my everything. 💖">
+          "In a sea of people, my eyes will always search for you..."
+        </button>
+        <button class="quick-msg-btn" data-msg="I choose you. Today, tomorrow, and for all the days to come. Forever yours. 💝">
+          "I choose you. Today, tomorrow, and forever..."
+        </button>
+      </div>
 
-    <div class="credit-love">
-      ✨ Spread Love · Collect Hearts · Share Joy ✨
+      <div class="message-input-group">
+        <input 
+          type="text" 
+          id="loveMessageInput" 
+          class="love-input" 
+          placeholder="Write your heart's desire here... ✨💕"
+          autofocus
+        >
+        <button id="generateBtn" class="generate-btn">
+          🔗 Generate Love Link
+        </button>
+      </div>
+
+      <div class="link-preview" id="linkPreview">
+        <div style="margin-bottom: 1rem; color: #a02050; font-weight: 600;">Your Love Link:</div>
+        <a href="#" id="generatedLink" target="_blank"></a>
+        <button id="copyBtn" class="copy-btn">📋 Copy Link</button>
+      </div>
     </div>
   </div>
 
   <script>
     // ===================================================================
-    //   HEART ANIMATIONS (preserved from original)
+    //   HEART ANIMATIONS
     // ===================================================================
     (function() {
       "use strict";
@@ -1065,245 +1023,176 @@
     })();
 
     // ===================================================================
-    //   GAMIFICATION & INTERACTION FEATURES
+    //   VALENTINE INTERACTION
     // ===================================================================
-    (function setupValentineExperience() {
-      const messageEl = document.getElementById('heartMessage');
-      const seeMoreBtn = document.getElementById('seeMoreBtn');
-      const inputField = document.getElementById('loveMessageInput');
-      const shareBtn = document.getElementById('generateShareBtn');
+    (function setupValentine() {
+      const modalOverlay = document.getElementById('modalOverlay');
+      const modalMessage = document.getElementById('modalMessage');
+      const seeMoreModal = document.getElementById('seeMoreModal');
+      const btnYes = document.getElementById('btnYes');
+      const btnNo = document.getElementById('btnNo');
+      const mainContent = document.getElementById('mainContent');
+      const shareCTA = document.getElementById('shareCTA');
+      const shareSection = document.getElementById('shareSection');
+      const closeShare = document.getElementById('closeShare');
+      const loveInput = document.getElementById('loveMessageInput');
+      const generateBtn = document.getElementById('generateBtn');
+      const linkPreview = document.getElementById('linkPreview');
       const generatedLink = document.getElementById('generatedLink');
-      const copyHint = document.getElementById('copyHint');
-      const scrollHint = document.getElementById('scrollHint');
-      const heartCountEl = document.getElementById('heartCount');
-      const messagesCreatedEl = document.getElementById('messagesCreated');
-      const heartsCaughtEl = document.getElementById('heartsCaught');
-      const sharesCountEl = document.getElementById('sharesCount');
-
-      // Stats tracking
-      let stats = {
-        heartsCaught: parseInt(localStorage.getItem('heartsCaught') || '0'),
-        messagesCreated: parseInt(localStorage.getItem('messagesCreated') || '0'),
-        sharesCount: parseInt(localStorage.getItem('sharesCount') || '0')
-      };
-
-      function updateStats() {
-        heartCountEl.textContent = stats.heartsCaught;
-        heartsCaughtEl.textContent = stats.heartsCaught;
-        messagesCreatedEl.textContent = stats.messagesCreated;
-        sharesCountEl.textContent = stats.sharesCount;
-        localStorage.setItem('heartsCaught', stats.heartsCaught);
-        localStorage.setItem('messagesCreated', stats.messagesCreated);
-        localStorage.setItem('sharesCount', stats.sharesCount);
-      }
-
-      updateStats();
-
-      // Scroll hint behavior
-      scrollHint.addEventListener('click', () => {
-        document.querySelector('.valentine-lane').scrollIntoView({ behavior: 'smooth' });
-      });
-
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-          scrollHint.style.opacity = '0';
-          scrollHint.style.pointerEvents = 'none';
-        } else {
-          scrollHint.style.opacity = '1';
-          scrollHint.style.pointerEvents = 'auto';
-        }
-      });
-
-      // Clickable floating hearts (gamification)
-      const heartsContainer = document.getElementById('clickableHearts');
-      const heartEmojis = ['💕', '💖', '💗', '💓', '💝', '💘', '💞'];
-      
-      function createFloatingHeart() {
-        const heart = document.createElement('div');
-        heart.className = 'floating-heart';
-        heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
-        heart.style.left = Math.random() * (window.innerWidth - 50) + 'px';
-        heart.style.top = Math.random() * (window.innerHeight - 100) + 'px';
-        heart.style.animationDelay = Math.random() * 2 + 's';
-        
-        heart.addEventListener('click', () => {
-          stats.heartsCaught++;
-          updateStats();
-          heart.classList.add('collected-animation');
-          setTimeout(() => heart.remove(), 600);
-        });
-        
-        heartsContainer.appendChild(heart);
-        
-        setTimeout(() => {
-          if (!heart.classList.contains('collected-animation')) {
-            heart.remove();
-          }
-        }, 8000);
-      }
-
-      // Generate floating hearts periodically
-      setInterval(createFloatingHeart, 3000);
-      for (let i = 0; i < 5; i++) {
-        setTimeout(createFloatingHeart, i * 500);
-      }
+      const copyBtn = document.getElementById('copyBtn');
+      const floatingHearts = document.getElementById('floatingHearts');
 
       // Get message from URL
       function getMessageFromURL() {
         let params = new URLSearchParams(window.location.search);
         let msg = params.get('msg');
-        if (msg && msg.trim() !== '') { 
-          try { msg = decodeURIComponent(msg); } catch(e) {} 
-          return msg.trim(); 
+        if (msg && msg.trim() !== '') {
+          try { 
+            msg = decodeURIComponent(msg); 
+          } catch(e) {} 
+          return msg.trim();
         }
         return null;
       }
 
-      // Sweet default messages
-      const sweetDefaults = [
-        "💗 Be my Valentine? I've been thinking of you all day. You're the reason my heart beats faster. 💗",
-        "💘 You have my entire heart — no take backs. Every song, every sunset, every dream has you in it. 💘",
-        "💕 Forever yours, always, in this life and the next. You are my favorite thought. 💕",
-        "🌸 You are loved, deeply and endlessly. Today, tomorrow, and a thousand years from now. 🌸",
-        "💖 Will you be mine? My heart already knows your name. It's been calling you. 💖"
+      // Default romantic messages
+      const defaultMessages = [
+        "You are the light of my life, the beat of my heart, and the love of my soul. Every moment with you is a treasure, every memory a gift. Will you be mine, today and always? 💕✨",
+        "From the moment I met you, my heart knew you were the one. You make every day brighter, every moment sweeter. I choose you today, tomorrow, and forever. Be mine? 💖",
+        "You are my dream come true, my wish upon a star, my forever love. In your eyes, I see my future. In your smile, I find my home. Will you be my Valentine? 💝"
       ];
 
-      let urlMsg = getMessageFromURL();
-      let displayMsg;
-      if (urlMsg) { 
-        displayMsg = `💝 "${urlMsg}" 💝`; 
-      } else { 
-        displayMsg = sweetDefaults[Math.floor(Math.random() * sweetDefaults.length)]; 
-      }
-      messageEl.textContent = displayMsg;
+      // Set custom message if exists
+      const urlMsg = getMessageFromURL();
+      let displayMessage;
       
-      if (urlMsg) { 
-        inputField.value = urlMsg; 
-      } else { 
-        inputField.value = "Be my Valentine? You're my entire universe."; 
+      if (urlMsg) {
+        displayMessage = `💝 ${urlMsg} 💕`;
+      } else {
+        displayMessage = defaultMessages[Math.floor(Math.random() * defaultMessages.length)];
       }
+      
+      modalMessage.textContent = displayMessage;
+      loveInput.value = urlMsg || displayMessage;
 
-      // See more/less toggle
-      seeMoreBtn.addEventListener('click', function() {
-        if (messageEl.classList.contains('truncated')) {
-          messageEl.classList.remove('truncated');
-          messageEl.classList.add('expanded');
-          seeMoreBtn.innerHTML = '<span>💔</span> see less <span>💔</span>';
+      // See more/less toggle for modal
+      seeMoreModal.addEventListener('click', function() {
+        if (modalMessage.classList.contains('truncated')) {
+          modalMessage.classList.remove('truncated');
+          modalMessage.classList.add('expanded');
+          seeMoreModal.textContent = '💔 see less';
         } else {
-          messageEl.classList.add('truncated');
-          messageEl.classList.remove('expanded');
-          seeMoreBtn.innerHTML = '<span>💕</span> see more <span>💕</span>';
+          modalMessage.classList.add('truncated');
+          modalMessage.classList.remove('expanded');
+          seeMoreModal.textContent = '💕 see more';
         }
       });
 
-      messageEl.classList.add('truncated');
+      // "No" button escape behavior
+      btnNo.addEventListener('mouseenter', function() {
+        const maxX = window.innerWidth - this.offsetWidth - 20;
+        const maxY = window.innerHeight - this.offsetHeight - 20;
+        const randomX = Math.random() * maxX;
+        const randomY = Math.random() * maxY;
+        
+        this.style.position = 'fixed';
+        this.style.left = randomX + 'px';
+        this.style.top = randomY + 'px';
+      });
 
-      // Build shareable link
+      // "Yes" button - Show main content with floating hearts
+      btnYes.addEventListener('click', function() {
+        modalOverlay.classList.add('hidden');
+        
+        // Create floating hearts animation
+        createFloatingHearts();
+        
+        setTimeout(() => {
+          mainContent.classList.add('visible');
+        }, 300);
+      });
+
+      // Create floating hearts
+      function createFloatingHearts() {
+        const heartEmojis = ['💕', '💖', '💗', '💓', '💝', '💘', '💞', '❤️', '💟'];
+        
+        for (let i = 0; i < 30; i++) {
+          setTimeout(() => {
+            const heart = document.createElement('div');
+            heart.className = 'floating-heart-emoji';
+            heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            heart.style.animationDuration = (4 + Math.random() * 3) + 's';
+            floatingHearts.appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 8000);
+          }, i * 200);
+        }
+      }
+
+      // Share CTA - Show share section
+      shareCTA.addEventListener('click', function() {
+        shareSection.classList.add('visible');
+      });
+
+      // Close share section
+      closeShare.addEventListener('click', function() {
+        shareSection.classList.remove('visible');
+      });
+
+      // Quick message buttons
+      document.querySelectorAll('.quick-msg-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const msg = this.getAttribute('data-msg');
+          loveInput.value = msg;
+          loveInput.focus();
+        });
+      });
+
+      // Generate link
       function buildShareLink(messageText) {
         let base = window.location.origin + window.location.pathname;
-        let encoded = encodeURIComponent(messageText.trim() || "Be my Valentine? You're my entire universe.");
+        let encoded = encodeURIComponent(messageText.trim() || "Be mine forever? 💕");
         return `${base}?msg=${encoded}`;
       }
 
-      // Update link preview
-      function updateLinkPreview(msg) {
-        let shareUrl = buildShareLink(msg || "Be my Valentine? You're my entire universe.");
-        generatedLink.href = shareUrl;
-        generatedLink.textContent = shareUrl.length > 55 ? shareUrl.substring(0, 50) + '…' : shareUrl;
-        generatedLink.title = shareUrl;
-        let currentExpanded = !messageEl.classList.contains('truncated');
-        messageEl.textContent = msg ? `💝 "${msg}" 💝` : `💗 Be my Valentine? 💗`;
-        if (currentExpanded) {
-          messageEl.classList.remove('truncated');
-          messageEl.classList.add('expanded');
-        } else {
-          messageEl.classList.add('truncated');
-          messageEl.classList.remove('expanded');
-        }
-      }
-
-      let initMsg = inputField.value.trim() || "Be my Valentine? You're my entire universe.";
-      updateLinkPreview(initMsg);
-
-      // Share button
-      shareBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        let msg = inputField.value.trim();
-        if (msg === '') msg = "Be my Valentine? You're my entire universe.";
-        let shareUrl = buildShareLink(msg);
-        updateLinkPreview(msg);
-        stats.messagesCreated++;
-        stats.sharesCount++;
-        updateStats();
+      generateBtn.addEventListener('click', function() {
+        const msg = loveInput.value.trim() || "Be mine forever? 💕";
+        const shareUrl = buildShareLink(msg);
         
+        generatedLink.href = shareUrl;
+        generatedLink.textContent = shareUrl;
+        linkPreview.classList.add('visible');
+        
+        // Auto copy
         navigator.clipboard.writeText(shareUrl).then(() => {
-          shareBtn.innerHTML = '<span>✅</span> <span>COPIED!</span>';
-          setTimeout(() => { shareBtn.innerHTML = '<span>🔗</span> <span>SHARE LOVE</span>'; }, 2000);
-        }).catch(() => { 
-          prompt('💞 Copy your Valentine link:', shareUrl); 
+          generateBtn.textContent = '✅ Link Generated & Copied!';
+          setTimeout(() => {
+            generateBtn.innerHTML = '🔗 Generate Love Link';
+          }, 3000);
         });
       });
 
-      // Copy hint
-      copyHint.addEventListener('click', function() {
-        let url = generatedLink.href;
-        if (url && url !== '#') {
-          navigator.clipboard.writeText(url).then(() => {
-            copyHint.innerHTML = '✅ Copied!';
-            setTimeout(() => { copyHint.innerHTML = '📋 Copy Link'; }, 1500);
-          });
-        }
+      // Copy button
+      copyBtn.addEventListener('click', function() {
+        const url = generatedLink.href;
+        navigator.clipboard.writeText(url).then(() => {
+          copyBtn.textContent = '✅ Copied!';
+          setTimeout(() => {
+            copyBtn.textContent = '📋 Copy Link';
+          }, 2000);
+        });
       });
 
       // Live preview
-      inputField.addEventListener('input', function() {
-        let val = this.value.trim();
-        updateLinkPreview(val || "Be my Valentine? You're my entire universe.");
-      });
-
-      generatedLink.addEventListener('click', (e) => { 
-        e.preventDefault(); 
-        window.open(generatedLink.href, '_blank'); 
-      });
-
-      // Quick action buttons
-      document.querySelectorAll('.quick-action-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-          const msg = this.getAttribute('data-msg');
-          inputField.value = msg;
-          updateLinkPreview(msg);
-          inputField.focus();
-          
-          // Smooth scroll to input
-          document.querySelector('.interaction-card').scrollIntoView({ 
-            behavior: 'smooth', 
-            block: 'center' 
-          });
-        });
-      });
-
-      // Social share buttons
-      document.getElementById('shareTwitter').addEventListener('click', () => {
-        const url = generatedLink.href;
-        const text = "💕 Check out this Valentine's message I created! 💕";
-        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
-        stats.sharesCount++;
-        updateStats();
-      });
-
-      document.getElementById('shareWhatsapp').addEventListener('click', () => {
-        const url = generatedLink.href;
-        const text = `💕 Check out this Valentine's message I created! 💕\n${url}`;
-        window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
-        stats.sharesCount++;
-        updateStats();
-      });
-
-      document.getElementById('shareFacebook').addEventListener('click', () => {
-        const url = generatedLink.href;
-        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
-        stats.sharesCount++;
-        updateStats();
+      loveInput.addEventListener('input', function() {
+        if (linkPreview.classList.contains('visible')) {
+          const msg = this.value.trim() || "Be mine forever? 💕";
+          const shareUrl = buildShareLink(msg);
+          generatedLink.href = shareUrl;
+          generatedLink.textContent = shareUrl;
+        }
       });
     })();
   </script>
