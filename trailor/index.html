@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axtra Trailer Player</title>
+    <style>
+        /* Simple, clean player styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #000;
+            color: #fff;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .player-container {
+            max-width: 1000px;
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            background: #111;
+        }
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+            background: #000;
+        }
+        .error-message {
+            background: #330000;
+            border: 1px solid #ff4444;
+            color: #ff8888;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px;
+            text-align: center;
+            font-size: 16px;
+        }
+        .info {
+            margin-top: 20px;
+            color: #aaa;
+            font-size: 14px;
+        }
+        .loader {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="player-container">
+        <video id="trailerPlayer" controls preload="auto" playsinline>
+            <source id="videoSource" src="" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div id="loadingIndicator" class="loader"></div>
+        <div id="errorBox" class="error-message hidden"></div>
+    </div>
+    <div class="info">
+        <p>🎬 Axtra Trailer Player</p>
+    </div>
+
+    <script>
+        (function() {
+            const video = document.getElementById('trailerPlayer');
+            const source = document.getElementById('videoSource');
+            const loading = document.getElementById('loadingIndicator');
+            const errorBox = document.getElementById('errorBox');
+
+            // 1. Get the 'url' parameter from the current page's query string
+            const urlParams = new URLSearchParams(window.location.search);
+            const trailerUrl = urlParams.get('url');
+
+            // Helper to show error messages
+            function showError(message) {
+                errorBox.textContent = message;
+                errorBox.classList.remove('hidden');
+                loading.classList.add('hidden');
+                video.style.display = 'none';
+            }
+
+            // 2. Validate that a URL was provided
+            if (!trailerUrl) {
+                showError('❌ No trailer URL provided. Please add ?url=YOUR_ENCODED_URL');
+                return;
+            }
+
+            // 3. (Optional) Decode the URL – it may already be encoded from the app
+            let decodedUrl;
+            try {
+                decodedUrl = decodeURIComponent(trailerUrl);
+                // Quick check if it looks like a valid HTTP/HTTPS URL
+                if (!decodedUrl.startsWith('http://') && !decodedUrl.startsWith('https://')) {
+                    throw new Error('Invalid URL scheme');
+                }
+            } catch (e) {
+                showError('❌ The provided URL is invalid or malformed.');
+                return;
+            }
+
+            // 4. Set the video source
+            source.src = decodedUrl;
+
+            // 5. Handle video events
+            video.addEventListener('loadstart', () => {
+                loading.classList.remove('hidden');
+                errorBox.classList.add('hidden');
+            });
+
+            video.addEventListener('canplay', () => {
+                loading.classList.add('hidden');
+            });
+
+            video.addEventListener('error', (e) => {
+                loading.classList.add('hidden');
+                // Try to get more details about the error
+                const mediaError = video.error;
+                let errorMsg = 'Failed to load video. ';
+                if (mediaError) {
+                    switch (mediaError.code) {
+                        case MediaError.MEDIA_ERR_ABORTED:
+                            errorMsg += 'Loading aborted.';
+                            break;
+                        case MediaError.MEDIA_ERR_NETWORK:
+                            errorMsg += 'Network error – please check your connection.';
+                            break;
+                        case MediaError.MEDIA_ERR_DECODE:
+                            errorMsg += 'Video cannot be decoded (may be corrupted or unsupported format).';
+                            break;
+                        case MediaError.MEDIA_ERR_SRC_NOT_SUPPORTED:
+                            errorMsg += 'The video format or URL is not supported.';
+                            break;
+                        default:
+                            errorMsg += 'Unknown error.';
+                    }
+                } else {
+                    errorMsg += 'The video could not be loaded. It may be due to CORS restrictions or an invalid URL.';
+                }
+                showError(`❌ ${errorMsg}`);
+            });
+
+            // 6. Optional: If the video fails to load due to CORS, show a helpful message
+            //    (this is a bit of a hack, but we can detect if the resource fails to fetch)
+            //    We'll rely on the 'error' event above.
+
+            // 7. Finally, tell the browser to start loading
+            video.load();
+        })();
+    </script>
+</body>
+</html>
